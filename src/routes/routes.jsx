@@ -2,8 +2,14 @@ import {
     createBrowserRouter
   } from "react-router-dom";
 import Main from "../layouts/Main";
-import Home from "../pages/Home/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Home from "../pages/DefaultPages/Home/Home/Home";
+import Classes from "../pages/DefaultPages/Classes/Classes";
+import Instructors from "../pages/DefaultPages/Instructors/Instructors";
+import Login from "../pages/DefaultPages/AuthVerify/Login";
+import Registration from "../pages/DefaultPages/AuthVerify/Registration";
+import About from "../pages/DefaultPages/About/About";
+import Contract from "../pages/DefaultPages/Contract/Contract";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +20,30 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: 'classes',
+                element: <Classes></Classes>
+            },
+            {
+                path: 'instructors',
+                element: <Instructors></Instructors>
+            },
+            {
+                path: 'about',
+                element: <About></About>
+            },
+            {
+                path: 'contract',
+                element: <Contract></Contract>
+            },
+            {
+                path: 'login',
+                element: <Login></Login>
+            },
+            {
+                path: 'registration',
+                element: <Registration></Registration>
             }
         ]
     }

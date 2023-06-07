@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import useTheme from "../../../hooks/useTheme";
 import { BsMoonStarsFill, BsFillBrightnessHighFill } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
@@ -106,15 +106,27 @@ const Navbar = () => {
           Contract
         </NavLink>
         <div className="md:hidden flex flex-col items-center gap-4">
-          <button className={`px-4 py-1 rounded-full border border-primary text-base font-bold font-kanit hover:bg-red-500 hover:animate-pulse transition-all duration-300 ${isDarkMode ? 'text-white' : 'text-gray-700 hover:text-white'} `}>Login</button>
+          <Link to="/login">
+            <button
+              className={`px-4 py-1 rounded-full border border-primary text-base font-bold font-kanit hover:bg-red-500 hover:animate-pulse transition-all duration-300 ${
+                isDarkMode ? "text-white" : "text-gray-700 hover:text-white"
+              } `}
+            >
+              Login
+            </button>
+          </Link>
           {isDarkMode ? (
             <BsMoonStarsFill
-              className={`w-6 h-6 ${isDarkMode ? 'text-white' : 'text-gray-700'}`}
+              className={`w-6 h-6 ${
+                isDarkMode ? "text-white" : "text-gray-700"
+              }`}
               onClick={toggleTheme}
             ></BsMoonStarsFill>
           ) : (
             <BsFillBrightnessHighFill
-              className={`w-6 h-6 ${isDarkMode ? 'text-white' : 'text-gray-700'}`}
+              className={`w-6 h-6 ${
+                isDarkMode ? "text-white" : "text-gray-700"
+              }`}
               onClick={toggleTheme}
             ></BsFillBrightnessHighFill>
           )}
@@ -122,7 +134,7 @@ const Navbar = () => {
       </div>
       {/* user/login */}
       <div className="md:flex justify-center items-center gap-4 hidden">
-        <button className="my-btn ">Login</button>
+        <Link to="/login"><button className="my-btn ">Login</button></Link>
         {isDarkMode ? (
           <BsMoonStarsFill
             className="w-6 h-6"

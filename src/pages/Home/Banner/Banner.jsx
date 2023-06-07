@@ -27,11 +27,26 @@ const Banner = () => {
     backgroundSize: "cover",
     backgroundPosition: "center",
     transition: "transform 1s", // Set transition duration to 500ms
-    transform: showAnimation ? "scale(1.1)" : "scale(1)",
+    transform: showAnimation ? "scale(1.03)" : "scale(1)",
   };
   return (
     <div className="w-full h-screen overflow-hidden">
-      <div className="w-full h-full" style={backgroundStyle}></div>
+      <div className="w-full h-full" style={backgroundStyle}>
+        <div className="h-full max-w-[1520px] mx-auto flex justify-start items-center relative">
+          <div className="max-w-[700px] space-y-4 md:space-y-8">
+            <h1 className="lg:text-7xl font-kanit font-extrabold text-white">Let's Yourself Be Challenged</h1>
+            <p className="text-secondary font-kanit ">
+              Many desktop publishing package and web page editor now use Lorem
+              Ipsum their default search for 'lorem ipsum' will uncover many web
+              sites still in their infancy.
+            </p>
+            <div className="flex gap-4">
+              <button className="my-btn-fill">Contract Us</button>
+              <button className="my-btn text-white">More About Us</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

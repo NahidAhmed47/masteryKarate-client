@@ -18,7 +18,7 @@ const Banner = () => {
         );
         setShowAnimation(false);
       }, 1000);
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(timer); // Clear the timer on component unmount
   }, []);

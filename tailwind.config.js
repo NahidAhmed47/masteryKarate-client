@@ -10,6 +10,9 @@ export default {
         primary: '#dd0000',
         secondary: '#b8b8b8',
       },
+      fontFamily: {
+        kanit: ['Kanit', 'sans-serif'],
+      },
     },
   },
   plugins: [require("daisyui")],

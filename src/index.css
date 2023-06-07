@@ -8,3 +8,6 @@
 .icons{
     @apply text-primary w-4 h-4 transition-colors duration-500 hover:text-white
 }
+.my-btn{
+    @apply px-5 py-2 rounded-full border border-primary text-base font-bold font-kanit hover:bg-red-500 hover:animate-pulse transition-all duration-300
+}

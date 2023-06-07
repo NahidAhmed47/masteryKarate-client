@@ -33,8 +33,8 @@ const Banner = () => {
     <div className="w-full h-screen overflow-hidden">
       <div className="w-full h-full" style={backgroundStyle}>
         <div className="h-full max-w-[1520px] mx-auto flex justify-start items-center relative">
-          <div className="max-w-[700px] space-y-4 md:space-y-8">
-            <h1 className="lg:text-7xl font-kanit font-extrabold text-white">Let's Yourself Be Challenged</h1>
+          <div className="max-w-[700px] space-y-4 md:space-y-8 md:mt-16 px-4 md:px-0">
+            <h1 className="text-4xl lg:text-7xl font-kanit font-extrabold text-white">Let's Yourself Be Challenged</h1>
             <p className="text-secondary font-kanit ">
               Many desktop publishing package and web page editor now use Lorem
               Ipsum their default search for 'lorem ipsum' will uncover many web

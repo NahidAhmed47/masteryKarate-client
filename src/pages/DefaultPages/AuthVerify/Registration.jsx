@@ -1,13 +1,20 @@
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useTheme from "../../../hooks/useTheme";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Registration = () => {
   const [unHidePass, setUnHidePass] = useState(false);
   const { isDarkMode } = useTheme();
+  const { signUp, updateUser, logInWithGoogle } = useAuth();
+  const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location?.from?.state?.pathname || '/';
   const {
     register,
     handleSubmit,
@@ -15,12 +22,70 @@ const Registration = () => {
     setValue,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data)
+    
+    // Minimum length of 6 characters
+    if (data.password.length < 6) {
+        return setError('Password must be at least 6 characters long');
+      }
+  
+      // At least one capital letter
+      if (!/[A-Z]/.test(data.password)) {
+        return setError('Password must contain at least one capital letter');
+      }
+  
+      // At least one special character
+      if (!/[!@#$%^&*]/.test(data.password)) {
+        return setError('Password must contain at least one special character');
+      }
+      if(data.confirmPassword !== data.password){
+        return setError("Alert! Confirm password doesn't matched!")
+    }
+    signUp(data.email, data.password)
+      .then((result) => {
+        updateUser(data.name, data.photoUrl)
+          .then(() => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Account Created Successfully!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate(from, {replace:true});
+            reset();
+          })
+          .catch((error) => {
+            setError(error.message);
+          });
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+   // sign in with google
+   const handleGoogleSignIn = () => {
+    logInWithGoogle()
+      .then((result) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Account Created Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, {replace:true});
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
   const handleCheckboxChange = (value) => {
     const currentValue = watch("gender");
 
     if (currentValue === value) {
-      setValue("gender", ""); // Uncheck the checkbox if the same option is clicked again
+      setValue("gender", ""); 
     } else {
       setValue("gender", value);
     }
@@ -36,6 +101,7 @@ const Registration = () => {
             }`}
           >
             <div className="max-w-md mx-auto">
+                <p className="mb-3 text-primary text-sm">{error}</p>
               <div>
                 <h1
                   className={`text-2xl font-semibold font-kanit ${
@@ -330,7 +396,7 @@ const Registration = () => {
                   </div>
                 </form>
                 <div>
-                  <button className="border border-primary py-2 rounded-full flex items-center gap-2 text-blue-700 w-full mt-5 justify-center hover:text-white hover:bg-primary duration-300 font-kanit text-base">
+                  <button className="border border-primary py-2 rounded-full flex items-center gap-2 text-blue-700 w-full mt-5 justify-center hover:text-white hover:bg-primary duration-300 font-kanit text-base" onClick={handleGoogleSignIn}>
                     <FaGoogle className="w-5 h-5 "></FaGoogle> Sign in with
                     Google
                   </button>

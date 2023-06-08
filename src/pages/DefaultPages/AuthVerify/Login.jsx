@@ -1,15 +1,55 @@
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useTheme from "../../../hooks/useTheme";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const [unHidePass, setUnHidePass] = useState(false);
     const {isDarkMode} = useTheme();
+    const { logIn, logInWithGoogle } = useAuth();
+    const [error, setError] = useState("");
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/';
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    logIn(data.email, data.password)
+      .then((result) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Sign in Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, {replace:true});
+        reset();
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+  // login with google
+  const handleGoogleLogIn = () => {
+    logInWithGoogle()
+      .then((result) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Sign in Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, {replace:true});
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
   return (
     <div className={`min-h-screen w-full ${isDarkMode ? 'bg-darkcolor' : 'bg-white'}`}>
       <div className="min-h-screen py-6 flex flex-col justify-center sm:py-12">
@@ -17,6 +57,7 @@ const Login = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
           <div className={`relative px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20 ${isDarkMode ? 'bg-darkcolor' : 'bg-white'}`}>
             <div className="max-w-md mx-auto">
+            <p className="mb-3 text-primary text-sm">{error}</p>
               <div>
                 <h1 className={`text-2xl font-semibold font-kanit ${isDarkMode ? 'text-white' : 'text-gray-900'}`} >
                   Welcome back! Please Login
@@ -74,6 +115,7 @@ const Login = () => {
                 <div>
                 <button
                     className="border border-primary py-2 rounded-full flex items-center gap-2 text-blue-700 w-full mt-5 justify-center hover:text-white hover:bg-primary duration-300 font-kanit text-base"
+                    onClick={handleGoogleLogIn}
                   >
                     <FaGoogle className="w-5 h-5 "></FaGoogle> Sign in with
                     Google

@@ -1,8 +1,7 @@
-import React from 'react';
 
 const Login = () => {
     return (
-        <div>
+        <div className="min-h-screen">
             login
         </div>
     );

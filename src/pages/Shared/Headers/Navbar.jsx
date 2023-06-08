@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import useTheme from "../../../hooks/useTheme";
 import { BsMoonStarsFill, BsFillBrightnessHighFill } from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
@@ -10,6 +10,7 @@ const Navbar = () => {
   const toggleMenu = () => {
     setOpenMenu(!isOpenMenu);
   };
+  const location = useLocation();
   return (
     <div className="max-w-[1520px] mx-auto py-5 flex px-4 md:px-0 justify-between items-center relative">
       <div className="md:hidden">
@@ -49,10 +50,8 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "text-primary font-kanit font-medium"
-              : `${
-                  isDarkMode ? "text-white" : "text-gray-700 md:text-white"
-                } 'hover:text-primary font-kanit font-medium '`
+              ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
+              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           Home
@@ -61,10 +60,8 @@ const Navbar = () => {
           to="/classes"
           className={({ isActive }) =>
             isActive
-              ? "text-primary font-kanit font-medium"
-              : `${
-                  isDarkMode ? "text-white" : "text-gray-700 md:text-white"
-                } 'hover:text-primary font-kanit font-medium '`
+              ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
+              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           Classes
@@ -73,10 +70,8 @@ const Navbar = () => {
           to="/instructors"
           className={({ isActive }) =>
             isActive
-              ? "text-primary font-kanit font-medium"
-              : `${
-                  isDarkMode ? "text-white" : "text-gray-700 md:text-white"
-                } 'hover:text-primary font-kanit font-medium '`
+              ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
+              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           Instructors
@@ -85,10 +80,8 @@ const Navbar = () => {
           to="/about"
           className={({ isActive }) =>
             isActive
-              ? "text-primary font-kanit font-medium"
-              : `${
-                  isDarkMode ? "text-white" : "text-gray-700 md:text-white"
-                } 'hover:text-primary font-kanit font-medium '`
+              ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
+              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           About
@@ -97,10 +90,8 @@ const Navbar = () => {
           to="/contract"
           className={({ isActive }) =>
             isActive
-              ? "text-primary font-kanit font-medium"
-              : `${
-                  isDarkMode ? "text-white" : "text-gray-700 md:text-white"
-                } 'hover:text-primary font-kanit font-medium '`
+              ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
+              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           Contract
@@ -109,7 +100,7 @@ const Navbar = () => {
           <Link to="/login">
             <button
               className={`px-4 py-1 rounded-full border border-primary text-base font-bold font-kanit hover:bg-red-500 hover:animate-pulse transition-all duration-300 ${
-                isDarkMode ? "text-white" : "text-gray-700 hover:text-white"
+                isDarkMode && location.pathname !== '/' ? "text-white" : "text-gray-700 md:font-semibold"
               } `}
             >
               Login

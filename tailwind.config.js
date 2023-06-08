@@ -9,6 +9,7 @@ export default {
       colors: {
         primary: '#dd0000',
         secondary: '#b8b8b8',
+        darkcolor: '#212226',
       },
       fontFamily: {
         kanit: ['Kanit', 'sans-serif'],

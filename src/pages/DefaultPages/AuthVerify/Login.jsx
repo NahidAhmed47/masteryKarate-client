@@ -39,6 +39,7 @@ const Login = () => {
                     >
                       Email
                     </label>
+                    {errors.email && <span className="text-xs font-kanit text-primary">This field is required *</span>}
                   </div>
                   <div className="relative">
                     <input
@@ -55,7 +56,7 @@ const Login = () => {
                     >
                       Password
                     </label>
-                    {errors.exampleRequired && <span>This field is required</span>}
+                    {errors.password && <span className="text-xs font-kanit text-primary">This field is required *</span>}
                     <div className={`absolute right-2 top-3 ${isDarkMode ? 'text-gray-300' : 'text-black'}`}>
                         {
                             unHidePass ? <BsFillEyeFill onClick={()=> setUnHidePass(!unHidePass)}></BsFillEyeFill> : <BsFillEyeSlashFill onClick={()=> setUnHidePass(!unHidePass)}></BsFillEyeSlashFill>

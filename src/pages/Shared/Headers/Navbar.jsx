@@ -113,16 +113,60 @@ const Navbar = () => {
           Contract
         </NavLink>
         {/* login and them mode btn for mobile device */}
+        {/* TODO: darkMode color bugs */}
         <div className="md:hidden flex flex-col items-center gap-4">
-          <Link to="/login">
-            <button
-              className={`px-4 py-1 rounded-full border border-primary text-base font-bold font-kanit hover:bg-red-500 hover:animate-pulse transition-all duration-300 ${
-                isDarkMode && location.pathname !== '/' ? "text-white" : "text-gray-700 md:font-semibold"
-              } `}
-            >
-              Login
-            </button>
-          </Link>
+        {user ? (
+              <div
+                className="overflow-hidden w-[35px] h-[35px] rounded-full "
+                onClick={handleProfile}
+              >
+                {
+                  user.photoURL === null ? <FaUserAlt className="w-full h-full text-secondary"></FaUserAlt> : <img
+                  src={user.photoURL}
+                  className="w-full h-full rounded-full origin-center duration-300"
+                  alt=""
+                  title={user.displayName}
+                />
+                }
+              </div>
+            ) : (
+              <Link to="/login"><button className={`my-btn ${isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}>Login</button></Link>
+            )}
+          <div
+            onClick={handleProfile}
+            className={`w-[250px] z-10 h-fit absolute  rounded-md shadow-md hover:shadow-2xl ${isDarkMode ? 'bg-darkcolor' : 'bg-white'} py-8 px-5 ${
+              profile ? "-top-0 left-20 md:left-auto md:top-12 md:right-12 " : "hidden"
+            } `}
+          >
+            <div className="w-[120px] h-[120px] mx-auto rounded-full border-2 border-primary overflow-hidden">
+              <img
+                src={user?.photoURL}
+                className="w-[120px] h-[120px] mx-auto rounded-full"
+                alt="profile"
+              />
+            </div>
+            <div className={`text-center  mt-5 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              <h1 className="text-base font-bold">Name: {user?.displayName}</h1>
+              <p className="text-xs mt-3">Email: {user?.email}</p>
+              <p
+                className={
+                  user?.emailVerified
+                    ? "text-xs text-white mt-1"
+                    : "text-xs text-red-500 mt-1"
+                }
+              >
+                {user?.emailVerified
+                  ? "Your Email has been verified!"
+                  : "Your Email is not verified!"}
+              </p>
+              <div
+                className="mt-4 my-btn hover:text-white"
+                onClick={handleLogOut}
+              >
+                Logout
+              </div>
+            </div>
+          </div>
           {isDarkMode ? (
             <BsMoonStarsFill
               className={`w-6 h-6 ${

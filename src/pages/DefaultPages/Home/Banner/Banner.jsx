@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ButtonFill from "../../../../components/ButtonFill/ButtonFill";
 
 const backgrounds = [
   "url(https://i.ibb.co/sv4htRb/banner-bg-1.jpg)", // Replace with your actual image URLs
@@ -41,7 +42,8 @@ const Banner = () => {
               sites still in their infancy.
             </p>
             <div className="flex gap-4">
-              <button className="my-btn-fill">Contract Us</button>
+              {/* <button className="my-btn-fill">Contract Us</button> */}
+              <ButtonFill name="Contract Us"></ButtonFill>
               <button className="my-btn text-white">More About Us</button>
             </div>
           </div>

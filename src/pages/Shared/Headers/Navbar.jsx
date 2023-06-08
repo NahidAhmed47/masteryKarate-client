@@ -14,6 +14,7 @@ const Navbar = () => {
   return (
     <div className="max-w-[1520px] mx-auto py-5 flex px-4 md:px-0 justify-between items-center relative">
       <div className="md:hidden">
+        {/* TODO: dark theme implement */}
         <FaTimes
           className={isOpenMenu ? "md:hidden w-6 h-6 text-white" : "hidden"}
           onClick={toggleMenu}
@@ -30,7 +31,7 @@ const Navbar = () => {
           src="https://i.ibb.co/TtWvLPx/mastery-karate-logo.png"
           alt=""
         />
-        <h1 className="text-3xl font-kanit font-extrabold">
+        <h1 className={`text-3xl font-kanit font-extrabold ${location.pathname !== '/' && isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}>
           Mastery<span className="text-primary">Karate</span>
         </h1>
       </div>
@@ -125,15 +126,15 @@ const Navbar = () => {
       </div>
       {/* user/login */}
       <div className="md:flex justify-center items-center gap-4 hidden">
-        <Link to="/login"><button className="my-btn ">Login</button></Link>
+        <Link to="/login"><button className={`my-btn ${isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}>Login</button></Link>
         {isDarkMode ? (
           <BsMoonStarsFill
-            className="w-6 h-6"
+            className={`w-6 h-6 ${isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}
             onClick={toggleTheme}
           ></BsMoonStarsFill>
         ) : (
           <BsFillBrightnessHighFill
-            className="w-6 h-6"
+            className={`w-6 h-6 ${isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}
             onClick={toggleTheme}
           ></BsFillBrightnessHighFill>
         )}

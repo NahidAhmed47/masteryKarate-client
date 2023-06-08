@@ -9,8 +9,11 @@
     @apply text-primary w-4 h-4 transition-colors duration-500 hover:text-white
 }
 .my-btn{
-    @apply px-5 py-2 rounded-full border border-primary text-base font-bold font-kanit hover:bg-red-500 hover:animate-pulse transition-all duration-300 text-white
+    @apply px-5 py-2 rounded-full border border-primary text-base font-bold font-kanit hover:bg-red-500 hover:animate-pulse transition-all duration-300 
 }
 .my-btn-fill{
-    @apply px-5 py-2 rounded-full border border-primary text-base font-bold font-kanit bg-primary hover:animate-pulse transition-all duration-300 text-white
+    @apply px-5 py-2 rounded-full border border-primary text-base font-bold font-kanit bg-primary hover:animate-pulse transition-all duration-300 
+}
+.input-label{
+    @apply absolute left-0 -top-5  text-sm peer-placeholder-shown:text-base  peer-placeholder-shown:top-2 transition-all peer-focus:-top-5  peer-focus:text-sm
 }

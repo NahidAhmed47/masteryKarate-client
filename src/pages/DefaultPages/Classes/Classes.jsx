@@ -6,6 +6,10 @@ import ClassCard from "../../../components/ClassCard/ClassCard";
 
 const Classes = () => {
   const [classes] = useClasses();
+//   TODO: Select Button. If the user is not logged in, then tell the user to log in before selecting the course. This button will be disabled if:
+// Available seats are 0
+// Logged in as admin/instructor
+// The class card background will be red if the available seats are 0.
   return (
     <div className={`pt-14 md:pt-40`}>
       <PagesBanner

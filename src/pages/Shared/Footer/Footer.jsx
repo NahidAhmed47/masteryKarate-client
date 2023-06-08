@@ -9,9 +9,9 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-900 h-fit md:h-[55vh]  w-full">
-      <div className="bg-[url('https://i.ibb.co/SctkR1y/footer-bg.png')] h-fit md:h-[55vh] w-full flex flex-col justify-between">
-        <div className="max-container pt-14 md:pt-20 grid grid-cols-2 md:grid-cols-4 gap-y-5 md:gap-y-0 p-2 md:p-0">
+    <div className="bg-gray-900 h-fit lg:h-[55vh]  w-full">
+      <div className="bg-[url('https://i.ibb.co/SctkR1y/footer-bg.png')] h-fit lg:h-[55vh] w-full flex flex-col justify-between">
+        <div className="max-container pt-14 md:pt-20 grid grid-cols-2 lg:grid-cols-4 gap-y-5 md:gap-y-0 p-2 md:p-0">
         <div className="flex flex-col  items-center gap-2">
         <img
           className="w-8 md:w-16"

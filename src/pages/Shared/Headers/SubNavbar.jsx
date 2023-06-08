@@ -11,7 +11,7 @@ import {
 
 const SubNavbar = () => {
   return (
-    <div className="hidden w-[1520px] mx-auto py-3 md:flex justify-between items-center font-kanit">
+    <div className="hidden max-w-[1520px] mx-auto py-3 md:flex justify-between items-center font-kanit">
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-2">
           <FaHeadphonesAlt className="icons"></FaHeadphonesAlt>{" "}

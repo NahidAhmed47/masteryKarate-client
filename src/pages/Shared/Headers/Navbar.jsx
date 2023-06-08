@@ -3,14 +3,29 @@ import useTheme from "../../../hooks/useTheme";
 import { BsMoonStarsFill, BsFillBrightnessHighFill } from "react-icons/bs";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
   const { isDarkMode, toggleTheme } = useTheme();
   const [isOpenMenu, setOpenMenu] = useState(false);
+  const [profile, setProfile] = useState(false);
+  const {user, logOut} = useAuth();
   const toggleMenu = () => {
     setOpenMenu(!isOpenMenu);
   };
   const location = useLocation();
+  const handleProfile = () => {
+    setProfile(!profile);
+  };
+  const handleLogOut = () => {
+    logOut()
+    .then(()=>{
+      navigate('/', {replace: true})
+    })
+    .catch(err =>{
+      console.log(err.message);
+    })
+  }
   return (
     <div className="max-w-[1520px] mx-auto py-5 flex px-4 md:px-0 justify-between items-center relative">
       <div className="md:hidden">
@@ -97,6 +112,7 @@ const Navbar = () => {
         >
           Contract
         </NavLink>
+        {/* login and them mode btn for mobile device */}
         <div className="md:hidden flex flex-col items-center gap-4">
           <Link to="/login">
             <button
@@ -124,9 +140,61 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      {/* user/login */}
-      <div className="md:flex justify-center items-center gap-4 hidden">
-        <Link to="/login"><button className={`my-btn ${isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}>Login</button></Link>
+      {/* user/login for big device */}
+      <div className="md:flex justify-center items-center gap-4 hidden relative">
+        {user ? (
+              <div
+                className="overflow-hidden w-[35px] h-[35px] rounded-full "
+                onClick={handleProfile}
+              >
+                {
+                  user.photoURL === null ? <FaUserAlt className="w-full h-full text-secondary"></FaUserAlt> : <img
+                  src={user.photoURL}
+                  className="w-full h-full rounded-full origin-center duration-300"
+                  alt=""
+                  title={user.displayName}
+                />
+                }
+              </div>
+            ) : (
+              <Link to="/login"><button className={`my-btn ${isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}>Login</button></Link>
+            )}
+          <div
+            onClick={handleProfile}
+            className={`w-[250px] z-10 h-fit absolute  rounded-md shadow-md hover:shadow-2xl ${isDarkMode ? 'bg-darkcolor' : 'bg-white'} py-8 px-5 ${
+              profile ? "-top-0 left-20 md:left-auto md:top-12 md:right-12 " : "hidden"
+            } `}
+          >
+            <div className="w-[120px] h-[120px] mx-auto rounded-full border-2 border-primary overflow-hidden">
+              <img
+                src={user?.photoURL}
+                className="w-[120px] h-[120px] mx-auto rounded-full"
+                alt="profile"
+              />
+            </div>
+            <div className={`text-center  mt-5 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              <h1 className="text-base font-bold">Name: {user?.displayName}</h1>
+              <p className="text-xs mt-3">Email: {user?.email}</p>
+              <p
+                className={
+                  user?.emailVerified
+                    ? "text-xs text-white mt-1"
+                    : "text-xs text-red-500 mt-1"
+                }
+              >
+                {user?.emailVerified
+                  ? "Your Email has been verified!"
+                  : "Your Email is not verified!"}
+              </p>
+              <div
+                className="mt-4 my-btn hover:text-white"
+                onClick={handleLogOut}
+              >
+                Logout
+              </div>
+            </div>
+          </div>
+
         {isDarkMode ? (
           <BsMoonStarsFill
             className={`w-6 h-6 ${isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}

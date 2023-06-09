@@ -1,7 +1,11 @@
 import React from "react";
 import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
+import useInstructorClasses from "../../../../hooks/useInstructorClasses";
+import InstructorClass from "../../../../components/InstructorClass/InstructorClass";
 
 const MyClasses = () => {
+    const [instructorClasses] = useInstructorClasses()
+    console.log(instructorClasses)
   return (
     <div className="w-full md:mt-10">
       <SectionHeader
@@ -19,17 +23,14 @@ const MyClasses = () => {
                 <th>Total Enrolled</th>
                 <th>Status</th>
                 <th>Feedback</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {/* row 1 */}
-              <tr className="bg-base-200">
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td className="pl-8">0</td>
-                <td className="text-yellow-500">pending</td>
-                <td>See Feedback</td>
-              </tr>
+              {
+                instructorClasses?.map((eachClass, index)=> <InstructorClass key={eachClass._id} eachClass={eachClass} index={index}></InstructorClass>)
+              }
+              
             </tbody>
           </table>
         </div>

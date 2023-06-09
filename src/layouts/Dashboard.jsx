@@ -6,7 +6,6 @@ import useRole from "../hooks/useRole";
 const Dashboard = () => {
   const { user } = useAuth();
   let [role] = useRole();
-  console.log(role)
   return (
     <div>
       <div className={`max-container border min-h-screen grid grid-cols-5`}>
@@ -105,7 +104,7 @@ const Dashboard = () => {
             <Link to='/' className="w-full mt-5"><button className="dashboard-btn text-black font-kanit font-bold">Home</button></Link>
           </div>
         </div>
-        <div>
+        <div className="w-full col-start-2 col-end-6 px-5 lg:px-10">
             <Outlet></Outlet>
         </div>
       </div>

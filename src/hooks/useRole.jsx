@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 
 const useRole = () => {
   const { user, loading } = useAuth();
-  console.log(user?.email)
   const { data: role = {}, refetch } = useQuery({
     queryKey: ['role', user?.email],
     enabled: !loading,
@@ -14,7 +13,6 @@ const useRole = () => {
         return data;
     },
   })
-  console.log(role)
   return [role?.role]
 };
 

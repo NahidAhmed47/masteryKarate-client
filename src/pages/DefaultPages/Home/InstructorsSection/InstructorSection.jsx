@@ -21,7 +21,7 @@ const InstructorSection = () => {
   };
   const topInstructors = separateTopInstructors(
     instructors,
-    "total_student"
+    "number_of_student"
   ).slice(0, 6);
   useEffect(() => {
     const interval = setInterval(() => {

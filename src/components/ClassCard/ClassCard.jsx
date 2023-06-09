@@ -4,7 +4,7 @@ import Rating from "react-rating";
 import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
 
-const ClassCard = ({ classes, children, updateStatus }) => {
+const ClassCard = ({ classes, children, updateStatus, setCurrentModalId }) => {
     const {isDarkMode} = useTheme();
     if (!classes) {
         return null;
@@ -64,7 +64,7 @@ const ClassCard = ({ classes, children, updateStatus }) => {
           children === 'manageClass' && <div className="w-full flex gap-1">
             <button onClick={()=> updateStatus(_id, 'denied')} className={`text-xs px-2 py-1 duration-300 text-white font-medium ${status === 'denied' || status === 'approved' ? 'bg-gray-400' : 'bg-primary'}`} disabled={status === 'denied' || status === 'approved'}>{status === 'denied' ? 'Denied' : 'Deny'}</button>
             <button onClick={()=> updateStatus(_id, 'approved')} className={`text-xs px-2 py-1 duration-300 text-white font-medium ${status === 'approved' || status === 'denied' ? 'bg-gray-400' : 'bg-blue-600 hover:bg-primary'}`} disabled={status === 'approved' || status === 'denied'}>{status === 'approved' ? 'Approved' : 'Approve'}</button>
-            <button className="text-xs px-2 py-1 hover:bg-primary duration-300 bg-blue-600 text-white font-medium" onClick={()=>window.my_modal_5.showModal()}>Feedback</button>
+            <button className="text-xs px-2 py-1 hover:bg-primary duration-300 bg-blue-600 text-white font-medium" onClick={()=>{window.my_modal_5.showModal(), setCurrentModalId(_id)}}>Feedback</button>
           </div>
         }
       </div>

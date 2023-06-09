@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const Registration = () => {
   const [unHidePass, setUnHidePass] = useState(false);
   const { isDarkMode } = useTheme();
-  const { signUp, updateUser, logInWithGoogle } = useAuth();
+  const { signUp, updateUser, logInWithGoogle, setControl, control } = useAuth();
   const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ const Registration = () => {
         return setError("Alert! Confirm password doesn't matched!")
     }
     signUp(data.email, data.password)
-      .then((result) => {
+      .then(() => {
         updateUser(data.name, data.photoUrl)
           .then(() => {
             Swal.fire({
@@ -53,6 +53,7 @@ const Registration = () => {
               showConfirmButton: false,
               timer: 1500,
             });
+            setControl(!control)
             navigate(from, {replace:true});
             reset();
           })

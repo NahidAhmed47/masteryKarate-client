@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useTheme from "../../../hooks/useTheme";
 import { BsMoonStarsFill, BsFillBrightnessHighFill } from "react-icons/bs";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaUserAlt } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {

@@ -32,6 +32,25 @@ const ManageUsers = () => {
         }
       });
     }
+    const deleteUser = (id)=>{
+      fetch(`http://localhost:5000/users/${id}`, {
+        method: "DELETE",
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if(data.deletedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Deleted User!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setControl(!control)
+        }
+      })
+    }
     return (
         <div className="w-full md:mt-10">
       <SectionHeader
@@ -53,7 +72,7 @@ const ManageUsers = () => {
             </thead>
             <tbody>
               {
-                users?.map((user, index) => <UserRow key={index} index={index} user={user} updateUser={updateUser}></UserRow>)
+                users?.map((user, index) => <UserRow key={index} index={index} user={user} updateUser={updateUser} deleteUser={deleteUser}></UserRow>)
               }
             </tbody>
           </table>

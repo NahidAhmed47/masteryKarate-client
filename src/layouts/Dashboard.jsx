@@ -95,7 +95,7 @@ const Dashboard = () => {
                   : "text-black font-kanit font-bold dashboard-btn"
               }
             >
-              Manage Classes
+              Manage Users
             </NavLink>
                 </>
             }

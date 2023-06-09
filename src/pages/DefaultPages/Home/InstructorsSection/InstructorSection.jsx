@@ -45,15 +45,15 @@ const InstructorSection = () => {
           </h1>
         </div>
         <div className=" w-full h-full max-container grid md:grid-cols-2 relative">
-          <div className="p-4 md:p-8">
+          <div className="p-4 md:p-10 lg:mr-4">
             <img
-              className="w-[50%] mx-auto md:w-[90%] rounded-2xl"
+              className="w-[50%] mx-auto md:w-[86%] rounded-2xl"
               src={selectedInstructor.image}
               alt=""
             />
           </div>
           <div className="w-full h-full relative">
-            <div className="space-y-2 flex flex-col items-center text-center md:space-y-5 md:absolute md:top-24 md:-left-8">
+            <div className="space-y-2 flex flex-col md:inline-block items-center md:text-start text-center md:space-y-5 md:absolute md:top-24 md:-left-8">
               <div className="p-3 rounded-full bg-white w-fit ">
                 <BsQuote className="text-2xl font-bold text-primary"></BsQuote>
               </div>

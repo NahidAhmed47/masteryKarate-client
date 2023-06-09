@@ -13,6 +13,10 @@ import Contract from "../pages/DefaultPages/Contract/Contract";
 import Dashboard from "../layouts/Dashboard";
 import AddClass from "../pages/Dashboard/InstructorDashboard/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/InstructorDashboard/MyClasses/MyClasses";
+import SelectedClasses from "../pages/Dashboard/UserDashboard/SeletedClasses/SelectedClasses";
+import EnrolledClasses from "../pages/Dashboard/UserDashboard/EnrolledClasses/EnrolledClasses";
+import ManageClasses from "../pages/Dashboard/AdminDashboard/ManageClasses/ManageClasses";
+import ManageUsers from "../pages/Dashboard/AdminDashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +65,22 @@ const router = createBrowserRouter([
         {
             path: 'my-classes',
             element: <MyClasses></MyClasses>
+        },
+        {
+            path: 'selected-classes',
+            element: <SelectedClasses></SelectedClasses>
+        },
+        {
+            path: 'enrolled-classes',
+            element: <EnrolledClasses></EnrolledClasses>
+        },
+        {
+            path: 'manage-classes',
+            element: <ManageClasses></ManageClasses>
+        },
+        {
+            path: 'manage-users',
+            element: <ManageUsers></ManageUsers>
         }
        ]
     }

@@ -47,7 +47,6 @@ const AuthProviders = ({children}) => {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                 })
                 setUser(user);
             }

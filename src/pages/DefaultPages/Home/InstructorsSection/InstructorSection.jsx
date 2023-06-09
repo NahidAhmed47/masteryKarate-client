@@ -23,7 +23,6 @@ const InstructorSection = () => {
     instructors,
     "total_student"
   ).slice(0, 6);
-  console.log(topInstructors);
   useEffect(() => {
     const interval = setInterval(() => {
       setSelectedInstructor(topInstructors[currentIndex]);
@@ -48,7 +47,7 @@ const InstructorSection = () => {
           <div className="p-4 md:p-10 lg:mr-4">
             <img
               className="w-[50%] mx-auto md:w-[86%] rounded-2xl"
-              src={selectedInstructor.image}
+              src={selectedInstructor?.image}
               alt=""
             />
           </div>
@@ -66,7 +65,7 @@ const InstructorSection = () => {
               </p>
               <div>
                 <h1 className="text-base md:text-xl font-extrabold text-white font-kanit">
-                  {selectedInstructor.name}
+                  {selectedInstructor?.name}
                 </h1>
                 <p className="text-sm font-medium text-gray-300 mt-1">
                   Karate Trainer

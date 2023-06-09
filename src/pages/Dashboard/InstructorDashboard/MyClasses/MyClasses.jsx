@@ -3,9 +3,10 @@ import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import useInstructorClasses from "../../../../hooks/useInstructorClasses";
 import InstructorClass from "../../../../components/InstructorClass/InstructorClass";
 
+// TODO: see feedback column open in this modal and show feedback result if feedback exists.
+
 const MyClasses = () => {
     const [instructorClasses] = useInstructorClasses()
-    console.log(instructorClasses)
   return (
     <div className="w-full md:mt-10">
       <SectionHeader

@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useInstructorClasses from "../../../../hooks/useInstructorClasses";
 
 const img_upload_token = import.meta.env.VITE_IMG_UPLOAD_KEY;
 
 const AddClass = () => {
   const { user, loading } = useAuth();
+  const [, refetch] = useInstructorClasses();
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_upload_token}`;
   const {
     register,
@@ -67,6 +69,7 @@ const AddClass = () => {
                                 timer: 1500,
                               });
                               reset()
+                              refetch()
                         }
                       })
                 }

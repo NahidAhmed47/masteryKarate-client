@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SectionHeader from '../../../../components/SectionHeader/SectionHeader';
+import UserRow from '../../../../components/UserRow/UserRow';
 
 const ManageUsers = () => {
+    const [users, setUsers] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/users')
+        .then(res => res.json())
+        .then(data => setUsers(data))
+    },[])
+    console.log(users)
     return (
         <div className="w-full md:mt-10">
       <SectionHeader
@@ -22,14 +30,9 @@ const ManageUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {/* row 1 */}
-              <tr className="bg-base-200">
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>nahidahmedsd47@gmail.com</td>
-                <td>Student</td>
-                <td>Instructor, Admin</td>
-              </tr>
+              {
+                users?.map((user, index) => <UserRow key={index} index={index} user={user}></UserRow>)
+              }
             </tbody>
           </table>
         </div>

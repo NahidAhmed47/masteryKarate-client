@@ -37,7 +37,7 @@ const AuthProviders = ({children}) => {
         const unSubscribe = onAuthStateChanged(auth, user =>{
             setLoading(true);
             if(user){
-                const savedUser = {name: user.name, email: user.email, role: "student"}
+                const savedUser = {name: user.displayName, email: user.email, role: "student"}
                 fetch('http://localhost:5000/users',{
                     method: 'POST',
                     headers:{

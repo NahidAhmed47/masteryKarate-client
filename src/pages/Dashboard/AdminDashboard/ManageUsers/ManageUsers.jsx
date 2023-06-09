@@ -1,14 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import SectionHeader from '../../../../components/SectionHeader/SectionHeader';
 import UserRow from '../../../../components/UserRow/UserRow';
+import Swal from 'sweetalert2';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
+    const [control, setControl] = useState(false);
     useEffect(()=>{
         fetch('http://localhost:5000/users')
         .then(res => res.json())
         .then(data => setUsers(data))
-    },[])
+    },[control])
+    const updateUser = (id, roleText) => {
+      fetch(`http://localhost:5000/users/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ roleText }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Updated",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setControl(!control)
+        }
+      });
+    }
     return (
         <div className="w-full md:mt-10">
       <SectionHeader
@@ -30,7 +53,7 @@ const ManageUsers = () => {
             </thead>
             <tbody>
               {
-                users?.map((user, index) => <UserRow key={index} index={index} user={user}></UserRow>)
+                users?.map((user, index) => <UserRow key={index} index={index} user={user} updateUser={updateUser}></UserRow>)
               }
             </tbody>
           </table>

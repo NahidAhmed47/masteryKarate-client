@@ -17,3 +17,9 @@
 .input-label{
     @apply absolute left-0 -top-5  text-sm peer-placeholder-shown:text-base  peer-placeholder-shown:top-2 transition-all peer-focus:-top-5  peer-focus:text-sm
 }
+.dashboard-btn{
+    @apply w-full text-center py-1 bg-slate-100 rounded 
+}
+.dashboard-btn-active{
+    @apply w-full text-center py-1 bg-primary text-white rounded 
+}

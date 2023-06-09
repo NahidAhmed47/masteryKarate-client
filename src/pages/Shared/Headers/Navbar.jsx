@@ -72,6 +72,7 @@ const Navbar = () => {
         >
           Home
         </NavLink>
+        {/* TODO: classes option only for students */}
         <NavLink
           to="/classes"
           className={({ isActive }) =>
@@ -92,6 +93,18 @@ const Navbar = () => {
         >
           Instructors
         </NavLink>
+        {
+          user && <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive
+              ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
+              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
+          }
+        >
+          Dashboard
+        </NavLink>
+        }
         <NavLink
           to="/about"
           className={({ isActive }) =>

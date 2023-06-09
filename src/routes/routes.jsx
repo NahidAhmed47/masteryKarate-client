@@ -10,6 +10,9 @@ import Login from "../pages/DefaultPages/AuthVerify/Login";
 import Registration from "../pages/DefaultPages/AuthVerify/Registration";
 import About from "../pages/DefaultPages/About/About";
 import Contract from "../pages/DefaultPages/Contract/Contract";
+import Dashboard from "../layouts/Dashboard";
+import AddClass from "../pages/Dashboard/InstructorDashboard/AddClass/AddClass";
+import MyClasses from "../pages/Dashboard/InstructorDashboard/MyClasses/MyClasses";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +49,20 @@ const router = createBrowserRouter([
                 element: <Registration></Registration>
             }
         ]
+    },
+    {
+       path: 'dashboard',
+       element: <Dashboard></Dashboard>,
+       children: [
+        {
+            path: 'add-class',
+            element: <AddClass></AddClass>
+        },
+        {
+            path: 'my-classes',
+            element: <MyClasses></MyClasses>
+        }
+       ]
     }
 ])
 

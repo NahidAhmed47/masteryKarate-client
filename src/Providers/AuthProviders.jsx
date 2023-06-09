@@ -37,6 +37,18 @@ const AuthProviders = ({children}) => {
         const unSubscribe = onAuthStateChanged(auth, user =>{
             setLoading(true);
             if(user){
+                const savedUser = {name: user.name, email: user.email, role: "student"}
+                fetch('http://localhost:5000/users',{
+                    method: 'POST',
+                    headers:{
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
                 setUser(user);
             }
             else{

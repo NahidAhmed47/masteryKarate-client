@@ -43,6 +43,7 @@ const AddClass = () => {
             total_review: 0,
             number_of_students: 0,
             image: imgURL,
+            feedback: ''
           };
           fetch("http://localhost:5000/classes", {
             method: "POST",

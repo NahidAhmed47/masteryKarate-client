@@ -1,11 +1,11 @@
 import React from "react";
 import PagesBanner from "../../../components/PagesBanner/PagesBanner";
 import SectionHeader from "../../../components/SectionHeader/SectionHeader";
-import useClasses from "../../../hooks/useClasses";
 import ClassCard from "../../../components/ClassCard/ClassCard";
+import useApprovedClasses from "../../../hooks/useApprovedClasses";
 
 const Classes = () => {
-  const [classes] = useClasses();
+  const [approvedClasses] = useApprovedClasses();
 //   TODO: Select Button. If the user is not logged in, then tell the user to log in before selecting the course. This button will be disabled if:
 // Available seats are 0 ...also do it homepage popular classes
 // Logged in as admin/instructor
@@ -22,7 +22,7 @@ const Classes = () => {
           subTitle="Classes"
         ></SectionHeader>
         <div className="grid md:grid-cols-2 gap-5 md:gap-8 mt-8">
-          {classes?.map((eachClass) => <ClassCard key={eachClass._id} classes={eachClass}></ClassCard>)}
+          {approvedClasses?.map((eachClass) => <ClassCard key={eachClass._id} classes={eachClass}></ClassCard>)}
         </div>
       </div>
     </div>

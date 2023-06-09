@@ -9,7 +9,6 @@ const ManageUsers = () => {
         .then(res => res.json())
         .then(data => setUsers(data))
     },[])
-    console.log(users)
     return (
         <div className="w-full md:mt-10">
       <SectionHeader

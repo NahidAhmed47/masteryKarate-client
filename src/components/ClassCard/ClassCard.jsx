@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import useRole from "../../hooks/useRole";
 import useSelectedClass from "../../hooks/useSelectedClass";
 // TODO: MOBILE RESPONSIVE REMAINING
-const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectClass}) => {
+const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectClass, spin}) => {
     const {isDarkMode} = useTheme();
     const [selectedClasses, refetch] = useSelectedClass();
     const [selectedId, setSelectedId] = useState('')
@@ -67,7 +67,7 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
         <p>${price}</p>
       </div>
       <div className={`absolute bottom-2 right-1 ${children !== 'manageClass' && 'hidden group-hover:inline-block'}`}>
-        {children !== 'manageClass' && <Link><button onClick={()=> selectClass(classes, refetch)} className={`text-sm font-bold text-white px-2 py-1  ${available_seats == 0 || role === 'instructor' || role === 'admin' || selectedId === classes._id ? 'bg-gray-400' : 'animate-bounce hover:bg-primary bg-blue-600'}`} disabled={available_seats == 0 || role === 'instructor' || role === 'admin' || selectedId === classes._id}>{selectedId === classes._id ? 'Selected' : 'Select'}</button></Link>}
+        {children !== 'manageClass' && <Link><button onClick={()=> selectClass(classes, refetch)} className={`text-sm font-bold text-white px-2 py-1 ${spin && 'w-14'} ${available_seats == 0 || role === 'instructor' || role === 'admin' || selectedId === classes._id ? 'bg-gray-400' : 'animate-bounce hover:bg-primary bg-blue-600'}`} disabled={available_seats == 0 || role === 'instructor' || role === 'admin' || selectedId === classes._id}>{selectedId === classes._id ? 'Selected' : spin ? <span className="loading loading-spinner loading-xs bg-white"></span> : 'Select'}</button></Link>}
         {/* show only manage classes route */}
         {
           children === 'manageClass' && <div className="w-full flex gap-1">

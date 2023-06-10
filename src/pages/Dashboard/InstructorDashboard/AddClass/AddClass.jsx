@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import useAuth from "../../../../hooks/useAuth";
@@ -10,6 +10,7 @@ const img_upload_token = import.meta.env.VITE_IMG_UPLOAD_KEY;
 const AddClass = () => {
   const { user, loading } = useAuth();
   const [, refetch] = useInstructorClasses();
+  const [spin, setSpin] = useState(false);
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_upload_token}`;
   const {
     register,
@@ -24,6 +25,7 @@ const AddClass = () => {
   }
 
   const onSubmit = (data) => {
+    setSpin(true);
     const formData = new FormData();
     formData.append("image", data.image[0]);
     const {available_seats, price, total_hours,instructor_email,instructor_name, name, student_level,description } = data;
@@ -59,8 +61,13 @@ const AddClass = () => {
             .then((res) => res.json())
             .then((data) => {
                 if(data.insertedId){
-                    
-                    Swal.fire({
+                    fetch(`http://localhost:5000/instructors/${user?.email}`,{
+                      method: 'PUT',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({name}),
+                    }).then((res) => res.json())
+                    .then(data => {
+                      Swal.fire({
                         position: "center",
                         icon: "info",
                         title: 'Class will be publish after Admin review!',
@@ -75,10 +82,12 @@ const AddClass = () => {
                                 showConfirmButton: false,
                                 timer: 1500,
                               });
+                              setSpin(false);
                               reset()
                               refetch()
                         }
                       })
+                    })
                 }
             });
         }
@@ -185,11 +194,10 @@ const AddClass = () => {
             className="file-input file-input-bordered w-full max-w-xs outline-none"
           />
         </div>
-        <input
+        <button
           type="submit"
-          value="Add Items"
-          className="my-btn py-2 mt-8 w-full"
-        />
+          className="my-btn py-2 mt-8 w-full hover:text-white"
+        >{spin ? <span className="loading loading-dots loading-md bg-primary"></span> : "Add Class"}</button>
       </form>
     </div>
   );

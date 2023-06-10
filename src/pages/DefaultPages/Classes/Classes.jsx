@@ -10,8 +10,10 @@ import Swal from "sweetalert2";
 const Classes = () => {
   const [approvedClasses] = useApprovedClasses();
   const {user} = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [spin , setSpin] = useState(false)
   const selectClass = (selectedClass, refetch)=>{
+    setSpin(true);
     if(!user){
       Swal.fire({
         title: 'You must have with loggin',
@@ -39,6 +41,7 @@ const Classes = () => {
     .then(data => {
       console.log(data)
       if(data.updateInst.modifiedCount > 0 && data.updateStudent.modifiedCount > 0 && data.updateClass.modifiedCount > 0) {
+        setSpin(false)
         Swal.fire({
           title: 'Class seleted successfully',
           icon: 'success',
@@ -67,7 +70,7 @@ const Classes = () => {
           subTitle="Classes"
         ></SectionHeader>
         <div className="grid md:grid-cols-2 gap-5 md:gap-8 mt-8">
-          {approvedClasses?.map((eachClass) => <ClassCard key={eachClass._id} classes={eachClass} selectClass={selectClass} ></ClassCard>)}
+          {approvedClasses?.map((eachClass) => <ClassCard key={eachClass._id} classes={eachClass} selectClass={selectClass} spin={spin}></ClassCard>)}
         </div>
       </div>
     </div>

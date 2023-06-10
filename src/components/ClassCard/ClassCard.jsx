@@ -35,7 +35,7 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
     _id
   } = classes;
   return (
-    <div className={`w-full h-full grid grid-cols-3 group gap-5  py-2 pr-2 md:pr-5 border-b items-center relative ${available_seats == 0 ? 'bg-red-400' : ''}`} title={available_seats == 0 && 'Class seat not available' || role !== 'student' && `You can't select class because you're ${role ? role : 'not Logged'}`}>
+    <div className={`w-full h-full grid grid-cols-3 group gap-5  py-2 pr-2 md:pr-5 border-b items-center relative ${available_seats == 0 ? 'bg-red-400' : ''}`} title={available_seats == 0 ? 'Class seat not available' : role !== 'student' ? `You can't select class because you're ${role ? role : 'not Logged'}` : ''}>
       <div className="w-full h-full overflow-hidden flex items-center">
         <img className="w-full group-hover:scale-[1.1] origin-center duration-500" src={image} alt="" />
       </div>

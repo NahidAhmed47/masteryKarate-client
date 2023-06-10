@@ -49,24 +49,23 @@ const AuthProviders = ({ children }) => {
 
       if (user) {
         setUser(user);
-        fetch('http://localhost:5000/jwt', {
-                    method: 'POST',
-                    headers:{
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify({email: user.email})
-                })
-                .then(res => res.json())
-                .then(data => {
-                    localStorage.setItem('access-token', data.token);
-                    setLoading(false)
-                })
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: user.email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("access-token", data.token);
+          });
         if (user.displayName) {
           const savedUser = {
             name: user.displayName || "",
             email: user.email,
             role: "student",
-            image: user.photoURL
+            image: user.photoURL,
           };
           fetch("http://localhost:5000/users", {
             method: "POST",
@@ -76,10 +75,11 @@ const AuthProviders = ({ children }) => {
             body: JSON.stringify(savedUser),
           })
             .then((res) => res.json())
-            .then(data => {});
+            .then((data) => {});
         }
       } else {
         setUser(null);
+        localStorage.removeItem('access-token');
       }
       setLoading(false);
     });

@@ -54,6 +54,7 @@ const AuthProviders = ({ children }) => {
             name: user.displayName || "",
             email: user.email,
             role: "student",
+            image: user.photoURL
           };
           fetch("http://localhost:5000/users", {
             method: "POST",
@@ -63,7 +64,7 @@ const AuthProviders = ({ children }) => {
             body: JSON.stringify(savedUser),
           })
             .then((res) => res.json())
-            .then((data) => {});
+            .then(data => {});
         }
       } else {
         setUser(null);

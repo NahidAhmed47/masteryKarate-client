@@ -3,9 +3,11 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
+import useRole from "../../hooks/useRole";
 
 const ClassCard = ({ classes, children, updateStatus, setCurrentModalId }) => {
     const {isDarkMode} = useTheme();
+    const [role] = useRole();
     if (!classes) {
         return null;
       }
@@ -26,7 +28,7 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId }) => {
     _id
   } = classes;
   return (
-    <div className="w-full h-full grid grid-cols-3 group gap-5  py-2 pr-2 md:pr-5 border-b items-center relative">
+    <div className={`w-full h-full grid grid-cols-3 group gap-5  py-2 pr-2 md:pr-5 border-b items-center relative ${available_seats == 0 ? 'bg-red-400' : ''}`} title={available_seats == 0 && 'Class seat not available' || role !== 'student' && `You can't select class because you're ${role}`}>
       <div className="w-full h-full overflow-hidden flex items-center">
         <img className="w-full group-hover:scale-[1.1] origin-center duration-500" src={image} alt="" />
       </div>
@@ -58,7 +60,7 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId }) => {
         <p>${price}</p>
       </div>
       <div className={`absolute bottom-2 right-1 ${children !== 'manageClass' && 'hidden group-hover:inline-block'}`}>
-        {children !== 'manageClass' && <Link><button className="text-sm font-bold bg-primary text-white px-2 py-1 animate-bounce">Select</button></Link>}
+        {children !== 'manageClass' && <Link><button className={`text-sm font-bold text-white px-2 py-1  ${available_seats == 0 || role === 'instructor' || role === 'admin' ? 'bg-gray-400' : 'animate-bounce hover:bg-primary bg-blue-600'}`} disabled={available_seats == 0 || role === 'instructor' || role === 'admin'}>Select</button></Link>}
         {/* show only manage classes route */}
         {
           children === 'manageClass' && <div className="w-full flex gap-1">

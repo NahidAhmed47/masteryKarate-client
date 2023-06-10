@@ -26,7 +26,7 @@ const AddClass = () => {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
-
+    const {available_seats, price, total_hours,instructor_email,instructor_name, name, student_level,description } = data;
     fetch(img_hosting_url, {
       method: "POST",
       body: formData,
@@ -35,9 +35,15 @@ const AddClass = () => {
       .then((res) => {
         if (res.success) {
           const imgURL = res.data.display_url;
-          delete data.image;
           const classDetails = {
-            ...data,
+            available_seats: parseFloat(available_seats),
+            price: parseFloat(price),
+            total_hours: parseFloat(total_hours),
+            instructor_email,
+            instructor_name,
+            name,
+            student_level,
+            description,
             status: "pending",
             rating: 0,
             total_review: 0,
@@ -112,7 +118,7 @@ const AddClass = () => {
             <input
               {...register("price", { required: true })}
               className="w-full h-10 px-3 bg-white text-black outline-none rounded-md"
-              type="number"
+              type="text"
               placeholder="Price"
             />
           </div>

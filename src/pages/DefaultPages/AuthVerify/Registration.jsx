@@ -23,8 +23,6 @@ const Registration = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
-    
     // Minimum length of 6 characters
     if (data.password.length < 6) {
         return setError('Password must be at least 6 characters long');

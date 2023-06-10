@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import SectionHeader from '../../../../components/SectionHeader/SectionHeader';
 import UserRow from '../../../../components/UserRow/UserRow';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
     const [control, setControl] = useState(false);
+    const [axiosSecure] = useAxiosSecure();
     useEffect(()=>{
-        fetch('http://localhost:5000/users')
-        .then(res => res.json())
-        .then(data => setUsers(data))
-    },[control])
+        axiosSecure.get('/users')
+        .then(res => setUsers(res.data))
+    },[control, axiosSecure])
     const updateUser = (id, roleText) => {
       fetch(`http://localhost:5000/users/${id}`, {
       method: "PUT",

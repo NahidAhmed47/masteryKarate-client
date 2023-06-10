@@ -11,8 +11,7 @@ const Classes = () => {
   const [approvedClasses] = useApprovedClasses();
   const {user} = useAuth();
   const navigate = useNavigate()
-  const selectClass = (selectedClass)=>{
-    console.log('dfdf')
+  const selectClass = (selectedClass, refetch)=>{
     if(!user){
       Swal.fire({
         title: 'You must have with loggin',
@@ -28,10 +27,9 @@ const Classes = () => {
           navigate('/login', {replace: true});
         }
       })
-      return
+      return;
     }
-    const {instructor_email, _id, available_seats } = selectedClass;
-    console.log('df')
+    const {instructor_email, _id } = selectedClass;
     fetch(`http://localhost:5000/select-class?inst=${instructor_email}&user=${user?.email}&classid=${_id}`,{
       method: 'PUT',
       headers:{
@@ -39,6 +37,7 @@ const Classes = () => {
       }
     }).then(res => res.json())
     .then(data => {
+      console.log(data)
       if(data.updateInst.modifiedCount > 0 && data.updateStudent.modifiedCount > 0 && data.updateClass.modifiedCount > 0) {
         Swal.fire({
           title: 'Class seleted successfully',
@@ -52,6 +51,7 @@ const Classes = () => {
             navigate('/dashboard/my-classes', {replace: true});
           } 
         })
+        refetch();
       }
     })
   }

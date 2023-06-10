@@ -2,16 +2,36 @@ import React from "react";
 import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import useSelectedClass from "../../../../hooks/useSelectedClass";
 import SelectedClassRow from "../../../../components/SelectedClassRow/SelectedClassRow";
+import useAuth from "../../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const SelectedClasses = () => {
-  const [selectedClasses] = useSelectedClass();
-  console.log(selectedClasses)
+  const [selectedClasses, refetch] = useSelectedClass();
+   const {user} = useAuth();
   if(!selectedClasses){
-    // add loading
+    // TODO: add loading
     return <div>Loading...</div>
   }
   const deleteSelectedClass = (id) =>{
-    console.log(id)
+    const deleteSelectedClass = selectedClasses.filter(eachClass => eachClass !== id)
+    fetch(`http://localhost:5000/selected-classes/${user?.email}`,{
+      method: 'PUT', 
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(deleteSelectedClass),
+    }).then(res => res.json()).then(data => {
+      if(data.modifiedCount > 0) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Selected class delete successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        refetch()
+      }
+    })
   }
   return (
     <div className="w-full md:mt-10">

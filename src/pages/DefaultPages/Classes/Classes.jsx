@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const Classes = () => {
   const [approvedClasses] = useApprovedClasses();
   const [instructors] = useInstructors();
-  const {user, loading} = useAuth();
+  const {user} = useAuth();
   const navigate = useNavigate()
   const selectClass = (selectedClass)=>{
     if(!user){
@@ -32,11 +32,30 @@ const Classes = () => {
       return
     }
     const {instructor_email, _id, available_seats } = selectedClass;
-    console.log(instructor_email, available_seats, _id)
     const instructor = instructors?.find(instructor => instructor.email === instructor_email);
-    console.log(instructor)
+    fetch(`http://localhost:5000/select-class?inst=${instructor_email}&user=${user?.email}&classid=${_id}`,{
+      method: 'PUT',
+      headers:{
+        'content-type': 'application/json',
+      }
+    }).then(res => res.json())
+    .then(data => {
+      if(data.updateInst.modifiedCount > 0 && data.updateStudent.modifiedCount > 0 && data.updateClass.modifiedCount > 0) {
+        Swal.fire({
+          title: 'Class seleted successfully',
+          icon: 'success',
+          showDenyButton: true,
+          showCancelButton: false,
+          confirmButtonText: 'Go to My classes page',
+          denyButtonText: `No, later`,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate('/dashboard/my-classes', {replace: true});
+          } 
+        })
+      }
+    })
   }
-//   TODO: Select Button. If the user is not logged in, then tell the user to log in before selecting the course. This button will be disabled if:
   return (
     <div className={`pt-14 md:pt-40`}>
       <PagesBanner

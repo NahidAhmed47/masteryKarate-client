@@ -4,7 +4,7 @@ import Rating from "react-rating";
 import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
 import useRole from "../../hooks/useRole";
-
+// TODO: MOBILE RESPONSIVE REMAINING
 const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectClass }) => {
     const {isDarkMode} = useTheme();
     const [role] = useRole();

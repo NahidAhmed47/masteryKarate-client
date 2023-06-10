@@ -49,6 +49,18 @@ const AuthProviders = ({ children }) => {
 
       if (user) {
         setUser(user);
+        fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers:{
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({email: user.email})
+                })
+                .then(res => res.json())
+                .then(data => {
+                    localStorage.setItem('access-token', data.token);
+                    setLoading(false)
+                })
         if (user.displayName) {
           const savedUser = {
             name: user.displayName || "",

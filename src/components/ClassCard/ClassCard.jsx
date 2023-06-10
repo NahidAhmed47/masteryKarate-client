@@ -11,7 +11,7 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
     const [selectedClasses] = useSelectedClass();
     const [selectedId, setSelectedId] = useState('')
     useEffect(()=>{
-      const findSelectedClass = selectedClasses.find(selected => selected === classes._id);
+      const findSelectedClass = selectedClasses?.find(selected => selected === classes._id);
       setSelectedId(findSelectedClass)
     },[selectedClasses, classes])
     const [role] = useRole();

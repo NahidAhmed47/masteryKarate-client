@@ -76,9 +76,9 @@ const InstructorSection = () => {
           <div className="h-fit md:w-[53%] gap-2 p-2 md:p-0  md:gap-5 grid grid-cols-3 md:grid-cols-6 md:absolute right-0 -bottom-14">
             {topInstructors?.map((instructor) => (
               <div
-                key={instructor._id}
+                key={instructor?._id}
                 className={` border-2 rounded-md ${
-                  selectedInstructor._id === instructor._id
+                  selectedInstructor?._id === instructor?._id
                     ? "border-primary"
                     : ""
                 }`}
@@ -86,7 +86,7 @@ const InstructorSection = () => {
               >
                 <img
                   className="w-full h-full rounded-md"
-                  src={instructor.image}
+                  src={instructor?.image}
                   alt=""
                 />
               </div>

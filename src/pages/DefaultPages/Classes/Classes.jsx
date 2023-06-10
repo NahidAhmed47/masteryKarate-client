@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PagesBanner from "../../../components/PagesBanner/PagesBanner";
 import SectionHeader from "../../../components/SectionHeader/SectionHeader";
 import ClassCard from "../../../components/ClassCard/ClassCard";
 import useApprovedClasses from "../../../hooks/useApprovedClasses";
-import useInstructors from "../../../hooks/useInstructors";
 import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Classes = () => {
   const [approvedClasses] = useApprovedClasses();
-  const [instructors] = useInstructors();
   const {user} = useAuth();
   const navigate = useNavigate()
   const selectClass = (selectedClass)=>{
+    console.log('dfdf')
     if(!user){
       Swal.fire({
         title: 'You must have with loggin',
@@ -32,7 +31,7 @@ const Classes = () => {
       return
     }
     const {instructor_email, _id, available_seats } = selectedClass;
-    const instructor = instructors?.find(instructor => instructor.email === instructor_email);
+    console.log('df')
     fetch(`http://localhost:5000/select-class?inst=${instructor_email}&user=${user?.email}&classid=${_id}`,{
       method: 'PUT',
       headers:{
@@ -68,7 +67,7 @@ const Classes = () => {
           subTitle="Classes"
         ></SectionHeader>
         <div className="grid md:grid-cols-2 gap-5 md:gap-8 mt-8">
-          {approvedClasses?.map((eachClass) => <ClassCard key={eachClass._id} classes={eachClass} selectClass={selectClass}></ClassCard>)}
+          {approvedClasses?.map((eachClass) => <ClassCard key={eachClass._id} classes={eachClass} selectClass={selectClass} ></ClassCard>)}
         </div>
       </div>
     </div>

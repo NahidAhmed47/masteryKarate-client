@@ -2,10 +2,11 @@ import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
 const UserRow = ({ user, index, updateUser, deleteUser }) => {
-  const { name, email, role, _id } = user;
+  const {image, name, email, role, _id } = user;
   return (
     <tr className="bg-base-200">
       <th>{index + 1}</th>
+      <td><img className="w-14 h-14 rounded-full" src={image} alt="" /></td>
       <td>{name}</td>
       <td>{email}</td>
       <td>{role}</td>

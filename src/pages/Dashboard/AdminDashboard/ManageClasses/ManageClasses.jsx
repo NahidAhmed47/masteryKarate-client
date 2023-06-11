@@ -3,20 +3,17 @@ import useClasses from "../../../../hooks/useClasses";
 import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import ClassCard from "../../../../components/ClassCard/ClassCard";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const ManageClasses = () => {
   const [classes, refetch] = useClasses();
   const [currentModalId, setCurrentModalId] = useState("");
-  const feedbackRef = useRef()
+  const feedbackRef = useRef();
+  const [axiosSecure] = useAxiosSecure();
   const updateStatus = (id, text) => {
-    fetch(`http://localhost:5000/allclass/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
+    axiosSecure.patch(`/allclass/${id}`, {text})
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
           Swal.fire({
             position: "center",
             icon: "success",

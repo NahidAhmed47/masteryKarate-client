@@ -55,12 +55,6 @@ const AddClass = () => {
             image: imgURL,
             feedback: ''
           };
-          // fetch("http://localhost:5000/classes", {
-          //   method: "POST",
-          //   headers: { "Content-Type": "application/json" },
-          //   body: JSON.stringify(classDetails),
-          // })
-          //   .then((res) => res.json())
           axiosSecure.post('/classes', classDetails)
             .then((res) => {
                 if(res.data.insertedId){

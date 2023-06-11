@@ -2,7 +2,7 @@ import React from "react";
 import useAuth from "../hooks/useAuth";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useRole from "../hooks/useRole";
-
+// TODO: ICON ADDED
 const Dashboard = () => {
   const { user } = useAuth();
   let [role] = useRole();
@@ -71,6 +71,16 @@ const Dashboard = () => {
               }
             >
               Enrolled Classes
+            </NavLink>
+            <NavLink
+              to="/dashboard/payment/history"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary font-kanit font-bold dashboard-btn-active "
+                  : "text-black font-kanit font-bold dashboard-btn"
+              }
+            >
+              Payment History
             </NavLink>
                 </>
             }

@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const CheckOutForm = ({ paymentClass }) => {
-  const {price, className, _id } = paymentClass;
+  const {price, name: className, _id } = paymentClass;
   const stripe = useStripe();
   const elements = useElements();
   const [selectedClasses, refetch] = useSelectedClass();
@@ -61,7 +61,6 @@ const CheckOutForm = ({ paymentClass }) => {
       setErr(confirmationErr.message);
     }
     setProcessing(false);
-    console.log(paymentIntent)
     const remainingClasses = selectedClasses.filter(
       (eachClass) => eachClass !== _id
     );
@@ -71,7 +70,6 @@ const CheckOutForm = ({ paymentClass }) => {
         if(res.data.insertedId){
           axiosSecure.patch('/payments', {email: user?.email,class_id: _id, remainingClasses})
           .then(res => {
-            console.log(res.data)
             if(res.data.updateClass.modifiedCount > 0 && res.data.updateInst.modifiedCount > 0 && res.data.updateStudent.modifiedCount > 0 ){
               Swal.fire({
                 position: 'center',
@@ -80,6 +78,7 @@ const CheckOutForm = ({ paymentClass }) => {
                 showConfirmButton: false,
                 timer: 1500
               })
+              refetch()
               navigate('/dashboard/selected-classes', {replace: true})
             }
           })

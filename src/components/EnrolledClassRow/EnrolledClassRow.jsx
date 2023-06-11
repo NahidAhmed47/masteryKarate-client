@@ -17,7 +17,7 @@ const EnrolledClassRow = ({index, id}) => {
         <img className="max-w-20 max-h-20" src={enrolledClass?.image} alt="" />
       </td>
       <td>{enrolledClass?.name}</td>
-      <td>${enrolledClass?.instructor_email}</td>
+      <td>{enrolledClass?.instructor_name}</td>
       <td><i>Enrolled</i></td>
     </tr>
     );

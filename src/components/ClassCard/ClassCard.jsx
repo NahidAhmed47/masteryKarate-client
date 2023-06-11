@@ -5,8 +5,7 @@ import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
 import useRole from "../../hooks/useRole";
 import useSelectedClass from "../../hooks/useSelectedClass";
-// TODO: MOBILE RESPONSIVE REMAINING 
-// TODO: bug for spin when user not logged in
+// TODO: MOBILE RESPONSIVE REMAINING and show number of students
 const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectClass, spin}) => {
     const {isDarkMode} = useTheme();
     const [selectedClasses, refetch] = useSelectedClass();

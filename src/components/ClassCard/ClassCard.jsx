@@ -16,7 +16,6 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
       setSelectedId(findSelectedClass)
     },[selectedClasses, classes])
     const [role] = useRole();
-    // console.log(role)
     if (!classes) {
         return null;
       }

@@ -1,20 +1,10 @@
 import React from "react";
 import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
-import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import useAuth from "../../../../hooks/useAuth";
-import { useState } from "react";
-import { useEffect } from "react";
 import EnrolledClassRow from "../../../../components/EnrolledClassRow/EnrolledClassRow";
+import useEnrolledClasses from "../../../../hooks/useEnrolledClasses";
 
 const EnrolledClasses = () => {
-  const [enrolledClassesId, setEnrolledClassesId] = useState([]);
-  const [axiosSecure] = useAxiosSecure();
-  const { user } = useAuth();
-  useEffect(() => {
-    axiosSecure
-      .get(`/enrolled/${user?.email}`)
-      .then((res) => setEnrolledClassesId(res.data));
-  }, [axiosSecure, user]);
+  const [enrolledClassesId] = useEnrolledClasses();
   return (
     <div className="w-full md:mt-10">
       <SectionHeader

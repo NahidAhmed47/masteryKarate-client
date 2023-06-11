@@ -2,6 +2,7 @@ import React  from 'react';
 import SectionHeader from '../../../../components/SectionHeader/SectionHeader';
 import ClassCard from '../../../../components/ClassCard/ClassCard';
 import useApprovedClasses from '../../../../hooks/useApprovedClasses';
+import CardContainer from '../../../../components/CardContainer/CardContainer';
 
 const PopularClasses = () => {
   const [approvedClasses] = useApprovedClasses();
@@ -16,15 +17,11 @@ const PopularClasses = () => {
         return acc;
       }, []);
   }
-  const separatedClasses = separateByDescending(approvedClasses, "number_of_student");
+  const separatedClasses = separateByDescending(approvedClasses, "number_of_student").slice(0,6);
   return (
     <div className='my-14 md:my-24 max-container'>
         <SectionHeader title="Popular Classes" subTitle="Best Selling"></SectionHeader>
-        <div className='grid md:grid-cols-2 gap-5 md:gap-8 mt-8'>
-          {
-            separatedClasses?.slice(0,6 ).map(classes => <ClassCard key={classes._id} classes={classes}></ClassCard>)
-          }
-        </div>
+        f<CardContainer classesData={separatedClasses}></CardContainer>
     </div>
   );
 };

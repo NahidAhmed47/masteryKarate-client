@@ -32,7 +32,7 @@ const Classes = () => {
       return;
     }
     const {instructor_email, _id } = selectedClass;
-    fetch(`https://mastery-karate-server.vercel.app/select-class?inst=${instructor_email}&user=${user?.email}&classid=${_id}`,{
+    fetch(`http://localhost:5000/select-class?inst=${instructor_email}&user=${user?.email}&classid=${_id}`,{
       method: 'PUT',
       headers:{
         'content-type': 'application/json',

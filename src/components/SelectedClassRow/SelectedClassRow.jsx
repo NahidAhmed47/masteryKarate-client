@@ -20,7 +20,7 @@ const SelectedClassRow = ({ selectedId, index, deleteSelectedClass }) => {
       <td>${selectedClass?.price}</td>
       <td>
         <div className="flex justify-center gap-5 items-center duration-200">
-          <Link to="/dashboard/payment">
+          <Link to={`/dashboard/payment/${selectedClass?._id}`}>
           <button className="text-sm px-3 py-1 text-white font-medium bg-blue-600 hover:bg-primary">
             Pay
           </button>

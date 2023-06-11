@@ -49,7 +49,7 @@ const AuthProviders = ({ children }) => {
 
       if (user) {
         setUser(user);
-        fetch("https://mastery-karate-server.vercel.app/jwt", {
+        fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -67,7 +67,7 @@ const AuthProviders = ({ children }) => {
             role: "student",
             image: user.photoURL,
           };
-          fetch("https://mastery-karate-server.vercel.app/users", {
+          fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

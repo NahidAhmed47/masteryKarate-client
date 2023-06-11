@@ -4,12 +4,14 @@ import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useInstructorClasses from "../../../../hooks/useInstructorClasses";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const img_upload_token = import.meta.env.VITE_IMG_UPLOAD_KEY;
 
 const AddClass = () => {
   const { user, loading } = useAuth();
   const [, refetch] = useInstructorClasses();
+  const [axiosSecure] = useAxiosSecure();
   const [spin, setSpin] = useState(false);
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_upload_token}`;
   const {
@@ -53,20 +55,17 @@ const AddClass = () => {
             image: imgURL,
             feedback: ''
           };
-          fetch("http://localhost:5000/classes", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(classDetails),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-                if(data.insertedId){
-                    fetch(`http://localhost:5000/instructors/${user?.email}`,{
-                      method: 'PUT',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({name}),
-                    }).then((res) => res.json())
-                    .then(data => {
+          // fetch("http://localhost:5000/classes", {
+          //   method: "POST",
+          //   headers: { "Content-Type": "application/json" },
+          //   body: JSON.stringify(classDetails),
+          // })
+          //   .then((res) => res.json())
+          axiosSecure.post('/classes', classDetails)
+            .then((res) => {
+                if(res.data.insertedId){
+                    axiosSecure.put(`/instructors/${user?.email}`, {name})
+                    .then(res => {
                       Swal.fire({
                         position: "center",
                         icon: "info",

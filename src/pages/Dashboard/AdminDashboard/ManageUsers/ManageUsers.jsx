@@ -13,14 +13,15 @@ const ManageUsers = () => {
         .then(res => setUsers(res.data))
     },[control, axiosSecure])
     const updateUser = (id, roleText) => {
-      fetch(`http://localhost:5000/users/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ roleText }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
+    //   fetch(`http://localhost:5000/users/${id}`, {
+    //   method: "PUT",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ roleText }),
+    // })
+    //   .then((res) => res.json())
+    axiosSecure.put(`/users/${id}`, {roleText})
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -33,13 +34,13 @@ const ManageUsers = () => {
       });
     }
     const deleteUser = (id)=>{
-      fetch(`http://localhost:5000/users/${id}`, {
-        method: "DELETE",
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        if(data.deletedCount > 0) {
+      // fetch(`http://localhost:5000/users/${id}`, {
+      //   method: "DELETE",
+      // })
+      // .then(res => res.json())
+      axiosSecure.delete(`/users/${id}`)
+      .then(res => {
+        if(res.data.deletedCount > 0) {
           Swal.fire({
             position: "center",
             icon: "success",

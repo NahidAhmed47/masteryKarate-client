@@ -10,12 +10,12 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 
 const Payment = () => {
     const {id} = useParams();
-    const [price, setPrice] = useState(null);
+    const [paymentClass, setPaymentClass] = useState({});
     const [axiosSecure] = useAxiosSecure();
     useEffect(()=>{
         const getPrice = async()=>{
             const res = await axiosSecure.get(`/selected-classes/${id}`)
-            setPrice(res.data.price)
+            setPaymentClass(res.data.paymentClass)
         }
         getPrice()
     },[axiosSecure, id])
@@ -27,7 +27,7 @@ const Payment = () => {
       ></SectionHeader>
       <div className="mt-8 md:mt-20 md:mx-20 p-4 md:py-8 md:px-5 rounded shadow-lg border-t min-h-[200px]">
         <Elements stripe={stripePromise}>
-          <CheckOutForm price={price}/>
+          <CheckOutForm paymentClass={paymentClass}/>
         </Elements>
       </div>
     </div>

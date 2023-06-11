@@ -2,25 +2,31 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import useSelectedClass from "../../hooks/useSelectedClass";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
-const CheckOutForm = ({ price }) => {
+const CheckOutForm = ({ paymentClass }) => {
+  const {price, className, _id } = paymentClass;
   const stripe = useStripe();
   const elements = useElements();
+  const [selectedClasses, refetch] = useSelectedClass();
   const { user } = useAuth();
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
   const [axiosSecure] = useAxiosSecure();
   const [err, setErr] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     const getClientSecret = async () => {
       const res = await axiosSecure.post("/create-payment-intent", { price });
-      console.log(res)
       if(res.data?.clientSecret){
         setClientSecret(res.data.clientSecret);
       }
     };
     getClientSecret();
-  }, [price, axiosSecure]);
+  }, [paymentClass, axiosSecure, price]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) {
@@ -55,7 +61,31 @@ const CheckOutForm = ({ price }) => {
       setErr(confirmationErr.message);
     }
     setProcessing(false);
-    console.log(paymentIntent);
+    console.log(paymentIntent)
+    const remainingClasses = selectedClasses.filter(
+      (eachClass) => eachClass !== _id
+    );
+    if(paymentIntent.status === "succeeded") {
+      axiosSecure.post('/payments', {name: user?.displayName, email: user?.email, transactionId: paymentIntent.id, className, price, class_id: _id})
+      .then(res => {
+        if(res.data.insertedId){
+          axiosSecure.patch('/payments', {email: user?.email,class_id: _id, remainingClasses})
+          .then(res => {
+            console.log(res.data)
+            if(res.data.updateClass.modifiedCount > 0 && res.data.updateInst.modifiedCount > 0 && res.data.updateStudent.modifiedCount > 0 ){
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'payment successful',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              navigate('/dashboard/selected-classes', {replace: true})
+            }
+          })
+        }
+      });
+    }
   };
   return (
     <form

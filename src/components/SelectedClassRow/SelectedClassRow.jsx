@@ -14,7 +14,7 @@ const SelectedClassRow = ({ selectedId, index, deleteSelectedClass }) => {
     <tr className="bg-base-200">
       <th>{index + 1}</th>
       <td>
-        <img className="max-w-24 max-h-24" src={selectedClass?.image} alt="" />
+        <img className="max-w-20 max-h-20" src={selectedClass?.image} alt="" />
       </td>
       <td>{selectedClass?.name}</td>
       <td>${selectedClass?.price}</td>

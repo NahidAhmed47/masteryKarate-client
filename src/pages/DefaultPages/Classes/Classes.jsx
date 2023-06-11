@@ -6,13 +6,15 @@ import useApprovedClasses from "../../../hooks/useApprovedClasses";
 import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Classes = () => {
   const [approvedClasses] = useApprovedClasses();
   const {user} = useAuth();
   const navigate = useNavigate();
+  const [axiosSecure] = useAxiosSecure();
   const [spin , setSpin] = useState(false)
-  const selectClass = (selectedClass, refetch)=>{
+  const selectClass = (selectedClassId,refetch)=>{
     setSpin(true);
     if(!user){
       Swal.fire({
@@ -31,16 +33,9 @@ const Classes = () => {
       })
       return;
     }
-    const {instructor_email, _id } = selectedClass;
-    fetch(`http://localhost:5000/select-class?inst=${instructor_email}&user=${user?.email}&classid=${_id}`,{
-      method: 'PUT',
-      headers:{
-        'content-type': 'application/json',
-      }
-    }).then(res => res.json())
-    .then(data => {
-      console.log(data)
-      if(data.updateInst.modifiedCount > 0 && data.updateStudent.modifiedCount > 0 && data.updateClass.modifiedCount > 0) {
+    axiosSecure.put(`/select-class?user=${user?.email}&classid=${selectedClassId}`)
+    .then(res => {
+      if(res.data.updateStudent.modifiedCount > 0) {
         setSpin(false)
         Swal.fire({
           title: 'Class seleted successfully',

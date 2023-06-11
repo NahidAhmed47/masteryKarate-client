@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useClasses from "../../hooks/useClasses";
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const SelectedClassRow = ({ selectedId, index, deleteSelectedClass }) => {
   const [classes] = useClasses();
@@ -19,9 +20,11 @@ const SelectedClassRow = ({ selectedId, index, deleteSelectedClass }) => {
       <td>${selectedClass?.price}</td>
       <td>
         <div className="flex justify-center gap-5 items-center duration-200">
+          <Link to="/dashboard/payment">
           <button className="text-sm px-3 py-1 text-white font-medium bg-blue-600 hover:bg-primary">
             Pay
           </button>
+          </Link>
           <button onClick={()=> deleteSelectedClass(selectedId)}>
             <FaTrashAlt className="w-5 h-5 text-primary"></FaTrashAlt>
           </button>

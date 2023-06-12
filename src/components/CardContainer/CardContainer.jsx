@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ClassCard from "../ClassCard/ClassCard";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -6,12 +6,17 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import Loading from "../Loading/Loading";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const CardContainer = ({ classesData }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
   const [spin, setSpin] = useState(false);
+  useEffect(()=>{
+    AOS.init();
+  },[])
   const selectClass = (selectedClassId, refetch) => {
     setSpin(true);
     if (!user) {
@@ -55,7 +60,7 @@ const CardContainer = ({ classesData }) => {
   return (
     <>
       {classesData.length > 0 ? (
-        <div className="grid lg:grid-cols-2 gap-5 md:gap-8 mt-8">
+        <div data-aos="zoom-in-up" className="grid lg:grid-cols-2 gap-5 md:gap-8 mt-8 ">
           {classesData?.map((eachClass) => (
             <ClassCard
               key={eachClass._id}

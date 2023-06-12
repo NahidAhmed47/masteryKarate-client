@@ -42,9 +42,7 @@ const Banner = () => {
       </h1>
       </Slide>
             <p className="text-[#b8b8b8] font-kanit ">
-              Many desktop publishing package and web page editor now use Lorem
-              Ipsum their default search for 'lorem ipsum' will uncover many web
-              sites still in their infancy.
+              Unleash your inner strength and embrace the art of mastery with our Karate training program. Join us on a journey of discipline, focus, and self-defense techniques, guided by experienced instructors.
             </p>
             <div className="flex gap-4">
               {/* <button className="my-btn-fill">Contract Us</button> */}

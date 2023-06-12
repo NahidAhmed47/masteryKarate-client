@@ -24,7 +24,7 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
     description,
     instructor_name,
     name,
-    number_of_student,
+    number_of_students,
     price,
     rating,
     student_level,
@@ -63,6 +63,7 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
         <div className={`text-xs font-normal flex gap-1`}>
             <p>{total_hours} total hours,</p>
             {children !== 'manageClass' && <p>{student_level}</p>}
+            {children !== 'manageClass' && <p className="hidden sm:inline-block">Students: {number_of_students}</p>}
         </div>
       </div>
       <div className={`absolute top-20 sm:top-1 text-sm sm:text-base right-0 font-bold ${isDarkMode ? 'text-gray-200' : 'text-black'}`}>

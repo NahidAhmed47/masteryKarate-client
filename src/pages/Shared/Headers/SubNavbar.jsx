@@ -28,7 +28,7 @@ const SubNavbar = () => {
         <div className="flex items-center gap-2">
           <FaRegEnvelope className="icons"></FaRegEnvelope>{" "}
           <p className="text-base font-medium text-[#b8b8b8] transition-colors duration-500 hover:text-primary">
-            example@gamil.com
+            masterykarate23@gamil.com
           </p>
         </div>
       </div>

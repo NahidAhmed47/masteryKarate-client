@@ -1,4 +1,4 @@
-## <img src="https://mastery-karate-client.web.app/" alt="logo Image" width="300" height="200">  MasteryKarate 
+## <img src="https://i.ibb.co/TtWvLPx/mastery-karate-logo.png" alt="logo Image" width="300" height="200"/>  MasteryKarate 
 
 ## Below are the features of MasteryKarate website
 

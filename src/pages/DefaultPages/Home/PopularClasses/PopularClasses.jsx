@@ -17,7 +17,7 @@ const PopularClasses = () => {
         return acc;
       }, []);
   }
-  const separatedClasses = separateByDescending(approvedClasses, "number_of_student").slice(0,6);
+  const separatedClasses = separateByDescending(approvedClasses, "number_of_students").slice(0,6);
   return (
     <div className='my-14 md:my-24 max-container'>
         <SectionHeader title="Popular Classes" subTitle="Best Selling"></SectionHeader>

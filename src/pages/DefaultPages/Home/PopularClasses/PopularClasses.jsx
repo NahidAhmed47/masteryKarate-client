@@ -6,7 +6,7 @@ import axios from 'axios';
 const PopularClasses = () => {
   const [popularClasses , setPopularClasses] = useState([]);
   useEffect(()=>{
-    axios.get('http://localhost:5000/popular-classes')
+    axios.get('https://mastery-karate-server.vercel.app/popular-classes')
     .then(res => setPopularClasses(res.data))
   },[])
   return (

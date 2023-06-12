@@ -24,7 +24,7 @@ const Headers = () => {
         location.pathname !== "/" ? `${isDarkMode ? 'bg-darkcolor' : 'bg-white'}` : ""
       }`}
     >
-      <div className={location.pathname !== '/' ? 'bg-darkcolor' : ''}>
+      <div className={location.pathname !== '/' ? 'bg-black' : ''}>
         <SubNavbar></SubNavbar>
       </div>
       <div className="w-full h-[1px] bg-[#313434]"></div>

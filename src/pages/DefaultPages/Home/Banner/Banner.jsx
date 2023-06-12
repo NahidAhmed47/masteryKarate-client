@@ -41,7 +41,7 @@ const Banner = () => {
             Let's Yourself Be Challenged
       </h1>
       </Slide>
-            <p className="text-secondary font-kanit ">
+            <p className="text-[#b8b8b8] font-kanit ">
               Many desktop publishing package and web page editor now use Lorem
               Ipsum their default search for 'lorem ipsum' will uncover many web
               sites still in their infancy.

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:5000/', 
+  baseURL: 'http://localhost:5000', 
 });
 
 const useAxiosSecure = () => {
@@ -15,7 +15,7 @@ const useAxiosSecure = () => {
     const token = localStorage.getItem('access-token');
     axiosSecure.interceptors.request.use((config) => {
       if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+        config.headers.authorization = `Bearer ${token}`;
       }
       return config;
     });

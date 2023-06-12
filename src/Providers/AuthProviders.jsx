@@ -44,28 +44,30 @@ const AuthProviders = ({ children }) => {
   };
   // user monitoring
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log({currentUser})
       setLoading(true);
-
-      if (user) {
-        setUser(user);
-        fetch("http://localhost:5000/jwt", {
+      setUser(currentUser);
+      if (currentUser) {
+        
+        if (currentUser.displayName) {
+          console.log('cliked')
+          fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify({ email: user.email }),
+          body: JSON.stringify({ email: currentUser?.email }),
         })
           .then((res) => res.json())
           .then((data) => {
-            localStorage.setItem("access-token", data.token);
+            localStorage.setItem("access-token", data?.token);
           });
-        if (user.displayName) {
           const savedUser = {
-            name: user.displayName || "",
-            email: user.email,
+            name: currentUser.displayName || "",
+            email: currentUser.email,
             role: "student",
-            image: user.photoURL,
+            image: currentUser.photoURL,
           };
           fetch("http://localhost:5000/users", {
             method: "POST",

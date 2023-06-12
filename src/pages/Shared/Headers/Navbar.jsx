@@ -73,7 +73,6 @@ const Navbar = () => {
         >
           Home
         </NavLink>
-        {/* TODO: classes option only for students */}
         <NavLink
           to="/classes"
           className={({ isActive }) =>

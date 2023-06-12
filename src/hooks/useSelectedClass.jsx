@@ -15,7 +15,7 @@ const useSelectedClass = () => {
             return res?.data;
         },
       })
-      const selectedClasses = student.selectedClasses;
+      const selectedClasses = student.selectedClasses || [];
       return [selectedClasses, refetch, isLoading ]
 };
 

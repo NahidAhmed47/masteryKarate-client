@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import useInstructorClasses from "../../../../hooks/useInstructorClasses";
 import InstructorClass from "../../../../components/InstructorClass/InstructorClass";
+import Loading from "../../../../components/Loading/Loading";
 
-// TODO: see feedback column open in this modal and show feedback result if feedback exists.
 
 const MyClasses = () => {
-  const [instructorClasses] = useInstructorClasses();
+  const [instructorClasses, , isLoading] = useInstructorClasses();
   const [feedback, setFeedback] = useState("");
+  if(isLoading){
+    return <Loading></Loading>
+  }
   return (
     <div className="w-full md:mt-10">
       <SectionHeader
@@ -15,7 +18,8 @@ const MyClasses = () => {
         subTitle="Share your talent"
       ></SectionHeader>
       <div>
-        <div className="overflow-x-auto mt-5 md:mt-8">
+        {
+          instructorClasses.length > 0 ? <div className="overflow-x-auto mt-5 md:mt-8">
           <table className="table">
             {/* head */}
             <thead>
@@ -51,7 +55,8 @@ const MyClasses = () => {
               <button>close</button>
             </form>
           </dialog>
-        </div>
+        </div>: <div className="text-primary text-center mt-20 lg:mt-28"><i>No classes have been added yet!</i></div>
+        }
       </div>
     </div>
   );

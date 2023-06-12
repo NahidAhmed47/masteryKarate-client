@@ -3,10 +3,14 @@ import useAuth from "../hooks/useAuth";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useRole from "../hooks/useRole";
 import { FaBookOpen, FaPlus, FaHome, FaPowerOff, FaReadme, FaWallet, FaEdit, FaUserFriends, FaBars } from "react-icons/fa";
+import Loading from "../components/Loading/Loading";
 const Dashboard = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut , loading} = useAuth();
   let [role] = useRole();
   const navigate = useNavigate();
+  if(loading){
+    return <Loading></Loading>
+  }
   const handleLogOut = ()=>{
     logOut().then(()=>{
       navigate('/', {replace: true});
@@ -17,7 +21,6 @@ const Dashboard = () => {
     <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content relative">
-    {/* Page content here */}
     <label htmlFor="my-drawer-2" className=" drawer-button lg:hidden absolute top-10 md:top-24 left-7"><FaBars className="w-6 h-6 text-darkcolor"></FaBars></label>
     <div className="w-full lg:col-start-2 lg:col-end-6 px-5 lg:px-10 mt-8 lg:mt-0 min-h-screen">
             <Outlet></Outlet>

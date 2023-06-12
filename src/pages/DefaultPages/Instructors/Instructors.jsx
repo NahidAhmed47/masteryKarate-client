@@ -3,6 +3,7 @@ import PagesBanner from "../../../components/PagesBanner/PagesBanner";
 import SectionHeader from "../../../components/SectionHeader/SectionHeader";
 import useInstructors from "../../../hooks/useInstructors";
 import InstructorCard from "../../../components/InstructorCard/InstructorCard";
+import Loading from "../../../components/Loading/Loading";
 
 const Instructors = () => {
   const [instructors] = useInstructors();
@@ -17,11 +18,18 @@ const Instructors = () => {
           title="World Class Trainers"
           subTitle="Trainers"
         ></SectionHeader>
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-5 lg:gap-10 mt-4 md:mt-10">
-            {
-                instructors?.map(instructor => <InstructorCard key={instructor._id} instructor={instructor}></InstructorCard>)
-            }
-        </div>
+        {instructors.length > 0 ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-5 lg:gap-10 mt-4 md:mt-10">
+            {instructors?.map((instructor) => (
+              <InstructorCard
+                key={instructor._id}
+                instructor={instructor}
+              ></InstructorCard>
+            ))}
+          </div>
+        ) : (
+          <Loading></Loading>
+        )}
       </div>
     </div>
   );

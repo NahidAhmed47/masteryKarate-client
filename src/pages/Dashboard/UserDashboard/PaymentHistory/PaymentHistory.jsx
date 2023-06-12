@@ -5,26 +5,34 @@ import { useEffect } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import PaymentHistoryRow from "../../../../components/PaymentHistoryRow/PaymentHistoryRow";
+import Loading from "../../../../components/Loading/Loading";
 
 const PaymentHistory = () => {
     const [paymentHistory, setPaymentHistory] = useState([]);
     const [axiosSecure] = useAxiosSecure();
+    const [loading, setLoading] = useState(true)
     const {user} = useAuth();
+    
     useEffect(()=>{
         const getHistory = async()=>{
             const res = await axiosSecure.get(`/payment-history/${user?.email}`);
             setPaymentHistory(res.data)
+            setLoading(false);
         }
         getHistory();
     },[user, axiosSecure])
+    if(loading){
+      return <Loading></Loading>
+    }
   return (
     <div className="w-full md:mt-10">
       <SectionHeader
-        title="See classes you enrolled so far"
+        title="See classes you enrolled yet"
         subTitle="Enrolled Classes"
       ></SectionHeader>
       <div>
-        <div className="overflow-x-auto mt-5 md:mt-8">
+        {
+          paymentHistory.length > 0 ? <div className="overflow-x-auto mt-5 md:mt-8">
           <table className="table">
             {/* head */}
             <thead className="text-center ">
@@ -36,13 +44,13 @@ const PaymentHistory = () => {
               </tr>
             </thead>
             <tbody className="text-center font-medium">
-                {/* TODO: SORT AS LIKE REVERSE WAY */}
               {
                 paymentHistory?.map((eachClass, index) => <PaymentHistoryRow eachClass={eachClass} key={index} index={index}></PaymentHistoryRow>)
               }
             </tbody>
           </table>
-        </div>
+        </div> : <div className="text-primary text-center mt-20 lg:mt-28"><i>No payment done yet!</i></div>
+        }
       </div>
     </div>
   );

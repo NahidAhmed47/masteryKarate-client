@@ -3,15 +3,21 @@ import SectionHeader from '../../../../components/SectionHeader/SectionHeader';
 import UserRow from '../../../../components/UserRow/UserRow';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import Loading from '../../../../components/Loading/Loading';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
     const [control, setControl] = useState(false);
     const [axiosSecure] = useAxiosSecure();
+    const [loading , setLoading] = useState(true);
     useEffect(()=>{
         axiosSecure.get('/users')
         .then(res => setUsers(res.data))
+        setLoading(false);
     },[control, axiosSecure])
+    if(loading){
+      return <Loading></Loading>
+    }
     const updateUser = (id, roleText) => {
     axiosSecure.put(`/users/${id}`, {roleText})
       .then((res) => {

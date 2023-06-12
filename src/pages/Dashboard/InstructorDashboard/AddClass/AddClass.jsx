@@ -5,6 +5,7 @@ import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useInstructorClasses from "../../../../hooks/useInstructorClasses";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Loading from "../../../../components/Loading/Loading";
 
 const img_upload_token = import.meta.env.VITE_IMG_UPLOAD_KEY;
 
@@ -22,8 +23,7 @@ const AddClass = () => {
     formState: { errors },
   } = useForm();
   if (loading) {
-    // TODO: loading added
-    return <div> Loading...</div>;
+    return <Loading></Loading>;
   }
 
   const onSubmit = (data) => {
@@ -187,10 +187,12 @@ const AddClass = () => {
             className="file-input file-input-bordered w-full max-w-xs outline-none"
           />
         </div>
+        <div className="w-full flex justify-center">
         <button
           type="submit"
-          className="my-btn py-2 mt-8 w-full hover:text-white"
+          className="my-btn py-2 mt-8 md:w-[200px] md:mx-auto hover:text-white"
         >{spin ? <span className="loading loading-dots loading-md bg-primary"></span> : "Add Class"}</button>
+        </div>
       </form>
     </div>
   );

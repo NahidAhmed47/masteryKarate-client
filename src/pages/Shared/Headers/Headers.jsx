@@ -20,7 +20,7 @@ const Headers = () => {
   }, []);
   return (
     <div
-      className={`inset-x-0 ${scrollY > 58 ? `sticky -top-16 bg-darkcolor bg-opacity-70` : 'absolute top-0'}  z-10 text-white ${
+      className={`inset-x-0 ${scrollY > 151 ? `sticky -top-16 bg-darkcolor bg-opacity-70` : 'absolute top-0'}  z-10 text-white ${
         location.pathname !== "/" ? `${isDarkMode ? 'bg-darkcolor' : 'bg-white'}` : ""
       }`}
     >

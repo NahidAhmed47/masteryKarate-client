@@ -5,14 +5,14 @@ import SelectedClassRow from "../../../../components/SelectedClassRow/SelectedCl
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Loading from "../../../../components/Loading/Loading";
 
 const SelectedClasses = () => {
-  const [selectedClasses, refetch] = useSelectedClass();
+  const [selectedClasses, refetch, isLoading] = useSelectedClass();
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  if (!selectedClasses) {
-    // TODO: add loading
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return <Loading></Loading>;
   }
   const deleteSelectedClass = (id) => {
     const deleteSelectedClass = selectedClasses.filter(
@@ -35,11 +35,12 @@ const SelectedClasses = () => {
   return (
     <div className="w-full md:mt-10">
       <SectionHeader
-        title="See classes you added so far"
+        title="See classes you added yet"
         subTitle="Selected Classes"
       ></SectionHeader>
       <div>
-        <div className="overflow-x-auto mt-5 md:mt-8">
+        {
+          selectedClasses.length > 0 ? <div className="overflow-x-auto mt-5 md:mt-8">
           <table className="table">
             {/* head */}
             <thead>
@@ -62,7 +63,8 @@ const SelectedClasses = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </div> : <div className="text-primary text-center mt-20 lg:mt-28"><i>No classes have been selected yet!</i></div>
+        }
       </div>
     </div>
   );

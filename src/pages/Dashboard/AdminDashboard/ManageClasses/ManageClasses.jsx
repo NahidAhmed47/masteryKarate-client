@@ -4,12 +4,16 @@ import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import ClassCard from "../../../../components/ClassCard/ClassCard";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Loading from "../../../../components/Loading/Loading";
 
 const ManageClasses = () => {
-  const [classes, refetch] = useClasses();
+  const [classes, refetch, isLoading] = useClasses();
   const [currentModalId, setCurrentModalId] = useState("");
   const feedbackRef = useRef();
   const [axiosSecure] = useAxiosSecure();
+  if(isLoading){
+    return <Loading></Loading>
+  }
   const updateStatus = (id, text) => {
     axiosSecure.patch(`/allclass/${id}`, {text})
       .then((res) => {
@@ -34,7 +38,8 @@ const ManageClasses = () => {
         title="Manage Classes"
         subTitle="See all classes"
       ></SectionHeader>
-      <div className="grid md:grid-cols-2 gap-5 lg:gap-7 mt-7">
+      {
+        classes.length > 0 ? <div className="grid lg:grid-cols-2 gap-5 lg:gap-7 mt-7">
         {classes?.map((eachClass) => (
           <ClassCard
             key={eachClass._id}
@@ -45,7 +50,8 @@ const ManageClasses = () => {
             manageClass
           </ClassCard>
         ))}
-      </div>
+      </div> : <div className="text-primary text-center mt-20 lg:mt-28"><i>No classes have been in a store!</i></div>
+      }
       {/* modal part */}
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <form method="dialog" className="modal-box">

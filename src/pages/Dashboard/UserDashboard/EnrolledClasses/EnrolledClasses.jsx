@@ -3,9 +3,11 @@ import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import EnrolledClassRow from "../../../../components/EnrolledClassRow/EnrolledClassRow";
 import useEnrolledClasses from "../../../../hooks/useEnrolledClasses";
 import Loading from "../../../../components/Loading/Loading";
+import setTitle from "../../../../utls/setTitle";
 
 const EnrolledClasses = () => {
   const [enrolledClassesId, , isLoading] = useEnrolledClasses();
+  setTitle('Enrolled classes')
   if(isLoading){
     return <Loading></Loading>
   }

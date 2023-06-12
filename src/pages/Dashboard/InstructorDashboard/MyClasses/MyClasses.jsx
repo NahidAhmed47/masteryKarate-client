@@ -3,11 +3,13 @@ import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
 import useInstructorClasses from "../../../../hooks/useInstructorClasses";
 import InstructorClass from "../../../../components/InstructorClass/InstructorClass";
 import Loading from "../../../../components/Loading/Loading";
+import setTitle from "../../../../utls/setTitle";
 
 
 const MyClasses = () => {
   const [instructorClasses, , isLoading] = useInstructorClasses();
   const [feedback, setFeedback] = useState("");
+  setTitle('MyClasses')
   if(isLoading){
     return <Loading></Loading>
   }

@@ -5,6 +5,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import setTitle from "../../../../utls/setTitle";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 
@@ -12,6 +13,7 @@ const Payment = () => {
     const {id} = useParams();
     const [paymentClass, setPaymentClass] = useState({});
     const [axiosSecure] = useAxiosSecure();
+    setTitle('Payment')
     useEffect(()=>{
         const getPrice = async()=>{
             const res = await axiosSecure.get(`/selected-classes/${id}`)

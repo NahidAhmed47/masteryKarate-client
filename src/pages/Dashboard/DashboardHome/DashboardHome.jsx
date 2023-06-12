@@ -1,9 +1,11 @@
 import React from "react";
 import useAuth from "../../../hooks/useAuth";
 import { Fade } from "react-awesome-reveal";
+import setTitle from "../../../utls/setTitle";
 
 const DashboardHome = () => {
   const { user } = useAuth();
+  setTitle('Dashboard')
   return (
     <div className="flex justify-center items-center border-1 w-full h-full mt-10 md:mt-24">
       <div className="text-2xl md:text-4xl font-kanit font-bold  flex gap-4">

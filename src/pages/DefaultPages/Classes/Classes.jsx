@@ -3,9 +3,11 @@ import PagesBanner from "../../../components/PagesBanner/PagesBanner";
 import SectionHeader from "../../../components/SectionHeader/SectionHeader";
 import useApprovedClasses from "../../../hooks/useApprovedClasses";
 import CardContainer from "../../../components/CardContainer/CardContainer";
+import setTitle from "../../../utls/setTitle";
 
 const Classes = () => {
   const [approvedClasses] = useApprovedClasses();
+  setTitle('Classes')
   return (
     <div className={`pt-14 md:pt-40`}>
       <PagesBanner

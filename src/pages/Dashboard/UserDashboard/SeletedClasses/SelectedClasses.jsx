@@ -6,11 +6,13 @@ import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Loading from "../../../../components/Loading/Loading";
+import setTitle from "../../../../utls/setTitle";
 
 const SelectedClasses = () => {
   const [selectedClasses, refetch, isLoading] = useSelectedClass();
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
+  setTitle('Selected classes')
   if (isLoading) {
     return <Loading></Loading>;
   }

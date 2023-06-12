@@ -4,9 +4,11 @@ import SectionHeader from "../../../components/SectionHeader/SectionHeader";
 import useInstructors from "../../../hooks/useInstructors";
 import InstructorCard from "../../../components/InstructorCard/InstructorCard";
 import Loading from "../../../components/Loading/Loading";
+import setTitle from "../../../utls/setTitle";
 
 const Instructors = () => {
   const [instructors] = useInstructors();
+  setTitle('Instructors')
   return (
     <div className={`pt-14 md:pt-40`}>
       <PagesBanner

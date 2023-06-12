@@ -4,12 +4,14 @@ import UserRow from '../../../../components/UserRow/UserRow';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import Loading from '../../../../components/Loading/Loading';
+import setTitle from '../../../../utls/setTitle';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
     const [control, setControl] = useState(false);
     const [axiosSecure] = useAxiosSecure();
     const [loading , setLoading] = useState(true);
+    setTitle('Manage Users');
     useEffect(()=>{
         axiosSecure.get('/users')
         .then(res => setUsers(res.data))

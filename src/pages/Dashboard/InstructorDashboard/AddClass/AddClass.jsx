@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import useInstructorClasses from "../../../../hooks/useInstructorClasses";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Loading from "../../../../components/Loading/Loading";
+import setTitle from "../../../../utls/setTitle";
 
 const img_upload_token = import.meta.env.VITE_IMG_UPLOAD_KEY;
 
@@ -15,6 +16,7 @@ const AddClass = () => {
   const [axiosSecure] = useAxiosSecure();
   const [spin, setSpin] = useState(false);
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_upload_token}`;
+  setTitle('Add Class')
   const {
     register,
     handleSubmit,

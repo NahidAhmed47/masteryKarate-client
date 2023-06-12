@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import useTheme from "../../../hooks/useTheme";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import setTitle from "../../../utls/setTitle";
 
 const Registration = () => {
   const [unHidePass, setUnHidePass] = useState(false);
@@ -15,6 +16,7 @@ const Registration = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location?.from?.state?.pathname || '/';
+  setTitle('Registration')
   const {
     register,
     handleSubmit,

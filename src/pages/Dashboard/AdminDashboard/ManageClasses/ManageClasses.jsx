@@ -5,12 +5,14 @@ import ClassCard from "../../../../components/ClassCard/ClassCard";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Loading from "../../../../components/Loading/Loading";
+import setTitle from "../../../../utls/setTitle";
 
 const ManageClasses = () => {
   const [classes, refetch, isLoading] = useClasses();
   const [currentModalId, setCurrentModalId] = useState("");
   const feedbackRef = useRef();
   const [axiosSecure] = useAxiosSecure();
+  setTitle('Manage Classes');
   if(isLoading){
     return <Loading></Loading>
   }

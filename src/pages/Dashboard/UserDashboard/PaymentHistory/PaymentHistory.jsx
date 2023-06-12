@@ -6,13 +6,14 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import PaymentHistoryRow from "../../../../components/PaymentHistoryRow/PaymentHistoryRow";
 import Loading from "../../../../components/Loading/Loading";
+import setTitle from "../../../../utls/setTitle";
 
 const PaymentHistory = () => {
     const [paymentHistory, setPaymentHistory] = useState([]);
     const [axiosSecure] = useAxiosSecure();
     const [loading, setLoading] = useState(true)
     const {user} = useAuth();
-    
+    setTitle('Payment History')
     useEffect(()=>{
         const getHistory = async()=>{
             const res = await axiosSecure.get(`/payment-history/${user?.email}`);

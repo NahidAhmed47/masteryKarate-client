@@ -27,7 +27,6 @@ const InstructorClass = ({ index, eachClass, setFeedback }) => {
         </button>
       </td>
       <td>
-        {/* TODO: update btn complete before submitting */}
         <button className="text-sm px-3 py-1 text-white font-medium bg-blue-600 hover:bg-primary duration-300">
           Update
         </button>

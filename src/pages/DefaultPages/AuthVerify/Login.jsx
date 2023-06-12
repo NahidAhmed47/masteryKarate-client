@@ -158,7 +158,6 @@ const Login = () => {
                       )}
                     </div>
                   </div>
-                  {/* TODO: button color change to blue */}
                   <div className="relative">
                     <button
                       className={`my-btn hover:text-white w-full`}

@@ -3,13 +3,13 @@ import { Navigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import useRole from '../../hooks/useRole';
 import Swal from 'sweetalert2';
+import Loading from '../../components/Loading/Loading';
 
 const AdminRoute = ({children}) => {
     const { user, loading } = useAuth();
     const [role, isLoading] = useRole();
     if(loading || isLoading){
-        // TODO: add loading
-        return <progress className="progress w-56"></progress>
+        return <Loading></Loading>
     }
 
     if (user && role === 'admin'){

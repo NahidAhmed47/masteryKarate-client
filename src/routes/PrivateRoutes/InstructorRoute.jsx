@@ -3,13 +3,13 @@ import useAuth from '../../hooks/useAuth';
 import useRole from '../../hooks/useRole';
 import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Loading from '../../components/Loading/Loading';
 
 const InstructorRoute = ({children}) => {
     const { user, loading } = useAuth();
     const [role, isLoading] = useRole();
     if(loading || isLoading) {
-        // TODO: add loading
-        return <progress className="progress w-56"></progress>
+        return <Loading></Loading>
     }
     else if (user && role === 'instructor'){
         return children;

@@ -45,13 +45,11 @@ const AuthProviders = ({ children }) => {
   // user monitoring
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log({currentUser})
       setLoading(true);
       setUser(currentUser);
       if (currentUser) {
         
         if (currentUser.displayName) {
-          console.log('cliked')
           fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {

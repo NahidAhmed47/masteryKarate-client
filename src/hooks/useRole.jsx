@@ -7,13 +7,6 @@ const useRole = () => {
   const { user, loading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const token = localStorage.getItem("access-token");
-  // console.log(token)
-  // const [render, setRender] = useState(!token ? true : false);
-  // useEffect(() => {
-  //   if (user && token) {
-  //     setRender(true);
-  //   }
-  // }, [user, token]);
   const {
     data: role = {},
     refetch,

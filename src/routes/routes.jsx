@@ -22,6 +22,7 @@ import InstructorRoute from "./PrivateRoutes/InstructorRoute";
 import StudentRoute from "./PrivateRoutes/StudentRoute";
 import Payment from "../pages/Dashboard/UserDashboard/Payments/Payment";
 import PaymentHistory from "../pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 const router = createBrowserRouter([
     {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
        path: 'dashboard',
        element: <Dashboard></Dashboard>,
        children: [
+        {
+            path:'home',
+            element: <DashboardHome></DashboardHome>
+        },
         {
             path: 'add-class',
             element: <InstructorRoute><AddClass></AddClass></InstructorRoute>

@@ -95,7 +95,7 @@ const Navbar = () => {
         </NavLink>
         {
           user && <NavLink
-          to="/dashboard"
+          to="/dashboard/home"
           className={({ isActive }) =>
             isActive
               ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`

@@ -40,13 +40,15 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
         <img className="w-full group-hover:scale-[1.1] origin-center duration-500" src={image} alt="" />
       </div>
       <div className={`col-start-2 col-end-4 w-full h-full ${isDarkMode ? 'text-gray-200' : ''}`}>
-        <h1 className={`text-lg font-bold font-kanit`}>{name}</h1>
-        <p className={`text-sm font-normal ${children === 'manageClass' && 'hidden'}`}>{description.length > 99 ? description.slice(0,99)+' see more...' : description}</p>
-        <p className={`text-sm font-medium`}>{instructor_name}</p>
+        <h1 className={`text-base sm:text-lg font-bold font-kanit`}>{name}</h1>
+        <div className="w-[200px] sm:w-fit h-[20px] sm:h-fit overflow-hidden"> 
+        <p className={`text-xs sm:text-sm font-normal ${children === 'manageClass' && 'hidden'}`}>{description.length > 99 ? description.slice(0,99)+' see more...' : description}</p>
+        </div>
+        <p className={`text-xs sm:text-sm font-medium`}>{instructor_name}</p>
         {children === 'manageClass' && <p className={`text-xs font-medium`}>{instructor_email}</p>}
         {
           children !== 'manageClass' && <div className="flex items-center gap-2">
-          <p className={`text-sm font-bold font-kanit text-orange-400`}>{rating}</p>
+          <p className={`text-xs sm:text-sm font-bold font-kanit text-orange-400`}>{rating}</p>
       <Rating
           emptySymbol={<FaRegStar className="text-orange-400" />}
           fullSymbol={<FaStar className="text-orange-400" />}
@@ -54,16 +56,16 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
           initialRating={rating}
           readonly
         />
-        <p className={`text-sm font-medium font-kanit`}>({total_review})</p>
+        <p className={`text-xs sm:text-sm font-medium font-kanit`}>({total_review})</p>
       </div>
         }
-        <p className={`text-sm font-medium`}>Available Seats: {available_seats}</p>
+        <p className={`text-xs sm:text-sm font-medium`}>Available Seats: {available_seats}</p>
         <div className={`text-xs font-normal flex gap-1`}>
             <p>{total_hours} total hours,</p>
             {children !== 'manageClass' && <p>{student_level}</p>}
         </div>
       </div>
-      <div className={`absolute top-1 right-0 font-bold ${isDarkMode ? 'text-gray-200' : 'text-black'}`}>
+      <div className={`absolute top-20 sm:top-1 text-sm sm:text-base right-0 font-bold ${isDarkMode ? 'text-gray-200' : 'text-black'}`}>
         <p>${price}</p>
       </div>
       <div className={`absolute bottom-2 right-1 ${children !== 'manageClass' && 'hidden group-hover:inline-block'}`}>

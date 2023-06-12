@@ -73,7 +73,7 @@ const InstructorSection = () => {
               </div>
             </div>
           </div>
-          <div className="h-fit md:w-[53%] gap-2 p-2 md:p-0  md:gap-5 grid grid-cols-3 md:grid-cols-6 md:absolute right-0 -bottom-14">
+          <div className="h-fit lg:w-[53%] gap-2 p-2 lg:p-0  md:gap-5 grid grid-cols-3 md:grid-cols-6 md:absolute right-0 -bottom-14">
             {topInstructors?.map((instructor) => (
               <div
                 key={instructor?._id}

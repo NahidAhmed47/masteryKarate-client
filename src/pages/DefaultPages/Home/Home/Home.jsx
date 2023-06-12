@@ -11,7 +11,6 @@ const Home = () => {
             <AboutUs></AboutUs>
             <PopularClasses></PopularClasses>
             <InstructorSection></InstructorSection>
-            home
         </div>
     );
 };

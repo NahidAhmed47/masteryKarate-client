@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .max-container{
-    @apply max-w-[1320px] mx-auto
+    @apply max-w-[1320px] mx-auto px-3 2xl:px-0
 }
 .icons{
     @apply text-primary w-4 h-4 transition-colors duration-500 hover:text-white

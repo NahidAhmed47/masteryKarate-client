@@ -13,9 +13,9 @@ const InstructorCard = ({ instructor }) => {
   } = instructor;
   const { isDarkMode } = useTheme();
   return (
-    <div className={`p-3 rounded-md border  grid grid-cols-2`}>
-      <div className="">
-        <img src={image} className="w-[80%]" alt="" />
+    <div className={`p-3 rounded-md border  grid sm:grid-cols-2 overflow-hidden`}>
+      <div>
+        <img src={image} className="w-[80%] mx-auto mb-3 sm:mb-0" alt="" />
       </div>
       <div className="flex flex-col justify-between">
         <h1

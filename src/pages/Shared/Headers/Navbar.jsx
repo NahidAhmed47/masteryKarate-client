@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useTheme from "../../../hooks/useTheme";
 import { BsMoonStarsFill, BsFillBrightnessHighFill } from "react-icons/bs";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
@@ -27,27 +27,27 @@ const Navbar = () => {
       console.log(err.message);
     })
   }
+  
   return (
-    <div className="max-w-[1520px] mx-auto py-5 flex px-4 md:px-0 justify-between items-center relative">
-      <div className="md:hidden">
-        {/* TODO: dark theme implement */}
+    <div className="max-w-[1520px] mx-auto py-3 mt-2 flex px-4 2xl:px-0 justify-between items-center  sticky top-0">
+      <div className="lg:hidden">
         <FaTimes
-          className={isOpenMenu ? "md:hidden w-6 h-6 text-white" : "hidden"}
+          className={isOpenMenu ? `${location.pathname === '/' ? 'lg:hidden w-6 h-6 text-white' : `${isDarkMode ? 'lg:hidden w-6 h-6 text-white' : 'lg:hidden w-6 h-6 text-black'}`}` : "hidden"}
           onClick={toggleMenu}
         ></FaTimes>
         <FaBars
-          className={!isOpenMenu ? "md:hidden w-6 h-6 text-white" : "hidden"}
+          className={!isOpenMenu ? `${location.pathname === '/' ? 'lg:hidden w-6 h-6 text-white' : `${isDarkMode ? 'lg:hidden w-6 h-6 text-white' : 'lg:hidden w-6 h-6 text-black'}`}` : "hidden"}
           onClick={toggleMenu}
         ></FaBars>
       </div>
       {/* logo */}
-      <div className="flex justify-center items-center gap-2">
+      <div className="flex justify-center items-center gap-2 ">
         <img
           className="w-8 md:w-16"
           src="https://i.ibb.co/TtWvLPx/mastery-karate-logo.png"
           alt=""
         />
-        <h1 className={`text-3xl font-kanit font-extrabold ${location.pathname !== '/' && isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}>
+        <h1 className={`text-xl sm:text-3xl font-kanit font-extrabold ${location.pathname !== '/' && isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}>
           Mastery<span className="text-primary">Karate</span>
         </h1>
       </div>
@@ -57,10 +57,10 @@ const Navbar = () => {
           isOpenMenu
             ? `${
                 isDarkMode
-                  ? "bg-gray-600 absolute top-14 rounded left-3 p-4 gap-2 flex flex-col"
-                  : "bg-white absolute top-14 rounded left-3 p-4 gap-2 flex flex-col"
+                  ? "bg-darkcolor absolute top-14 rounded left-3 p-4 gap-2 flex flex-col shadow-md lg:hidden"
+                  : "bg-white absolute top-14 rounded left-3 p-4 gap-2 flex flex-col shadow-md lg:hidden"
               }`
-            : "hidden md:flex items-center md:gap-8"
+            : "hidden lg:flex items-center md:gap-8"
         }
       >
         <NavLink
@@ -68,7 +68,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
-              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
+              : `${location.pathname === '/' ? "text-black lg:text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           Home
@@ -78,7 +78,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
-              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
+              : `${location.pathname === '/' ? "text-black lg:text-white  font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           Classes
@@ -88,7 +88,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
-              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
+              : `${location.pathname === '/' ? "text-black lg:text-white  font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           Instructors
@@ -99,7 +99,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
-              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
+              : `${location.pathname === '/' ? "text-black lg:text-white  font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           Dashboard
@@ -110,7 +110,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
-              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
+              : `${location.pathname === '/' ? "text-black lg:text-white  font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           About
@@ -120,13 +120,12 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? `text-primary font-kanit ${location.pathname === '/' ? 'font-medium' : 'font-semibold'}`
-              : `${location.pathname === '/' ? "text-white font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
+              : `${location.pathname === '/' ? "text-black lg:text-white  font-medium font-kanit" : `${isDarkMode ? 'text-white md:font-semibold font-kanit' : 'text-gray-700 md:font-semibold font-kanit'}`}`
           }
         >
           Contract
         </NavLink>
         {/* login and them mode btn for mobile device */}
-        {/* TODO: darkMode color bugs */}
         <div className="md:hidden flex flex-col items-center gap-4">
         {user ? (
               <div

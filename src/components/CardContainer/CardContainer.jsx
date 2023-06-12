@@ -52,7 +52,7 @@ const CardContainer = ({classesData}) => {
     })
   }
     return (
-        <div className="grid md:grid-cols-2 gap-5 md:gap-8 mt-8">
+        <div className="grid lg:grid-cols-2 gap-5 md:gap-8 mt-8">
           {classesData?.map((eachClass) => <ClassCard key={eachClass._id} classes={eachClass} selectClass={selectClass} spin={spin}></ClassCard>)}
         </div>
     );

@@ -6,12 +6,12 @@ import ButtonFill from "../../../../components/ButtonFill/ButtonFill";
 const AboutUs = () => {
   const { isDarkMode } = useTheme();
   return (
-    <div className="max-container my-14 md:my-20">
-      <div className="grid md:grid-cols-2 md:gap-2">
+    <div className="max-container my-14 md:my-20 ">
+      <div className="grid lg:grid-cols-2 md:gap-2">
         <div className=" relative p-3">
-          <div className="w-[75%] h-[80%] hidden md:block bg-red-100 rounded-xl absolute top-7  left-7"></div>
-          <div className="hidden md:block md:w-[75%] md:h-[80%] rounded-xl md:absolute top-0  left-0 bg-[url('https://i.ibb.co/xH1rQKc/about-img-4.jpg')] bg-cover"></div>
-          <img src="https://i.ibb.co/GpnNjN8/about-img-5.jpg" className="md:h-[70%] rounded-full md:absolute bottom-0  right-14 "></img>
+          <div className="w-[75%] h-[80%] hidden lg:block bg-red-100 rounded-xl absolute top-7  left-7"></div>
+          <div className="hidden lg:block md:w-[75%] md:h-[80%] rounded-xl md:absolute top-0  left-0 bg-[url('https://i.ibb.co/xH1rQKc/about-img-4.jpg')] bg-cover"></div>
+          <img src="https://i.ibb.co/GpnNjN8/about-img-5.jpg" className="lg:h-[70%] mx-auto rounded-full lg:absolute bottom-0  right-14 "></img>
         </div>
         <div className="space-y-4 px-2 md:px-0">
           <p className="text-primary font-kanit font-semibold text-lg">

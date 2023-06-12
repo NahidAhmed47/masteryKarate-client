@@ -17,7 +17,7 @@ const Instructors = () => {
           title="World Class Trainers"
           subTitle="Trainers"
         ></SectionHeader>
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 lg:gap-10 mt-4 md:mt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-5 lg:gap-10 mt-4 md:mt-10">
             {
                 instructors?.map(instructor => <InstructorCard key={instructor._id} instructor={instructor}></InstructorCard>)
             }

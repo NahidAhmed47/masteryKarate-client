@@ -32,10 +32,10 @@ const Banner = () => {
     transform: showAnimation ? "scale(1.03)" : "scale(1)",
   };
   return (
-    <div className="w-full h-screen overflow-hidden">
+    <div className="w-full h-[60vh] lg:h-screen overflow-hidden">
       <div className="w-full h-full" style={backgroundStyle}>
         <div className="h-full max-w-[1520px] mx-auto flex justify-start items-center relative">
-          <div className="max-w-[700px] space-y-4 md:space-y-8 md:mt-16 px-4 md:px-0 overflow-hidden">
+          <div className="max-w-[700px] space-y-4 md:space-y-8 md:mt-16 px-4 2xl:px-0 overflow-hidden">
           <Slide>
           <h1 className="text-4xl lg:text-7xl font-kanit font-extrabold text-white">
             Let's Yourself Be Challenged

@@ -34,7 +34,7 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
     _id
   } = classes;
   return (
-    <div className={`w-full h-full grid grid-cols-3 group gap-5  py-2 pr-2 md:pr-5 border-b items-center relative ${available_seats == 0 ? 'bg-red-400' : ''}`} title={available_seats == 0 ? 'Class seat not available' : role !== 'student' ? `You can't select class because you're ${role ? role : 'not Logged'}` : ''}>
+    <div className={`w-full h-full grid grid-cols-3 group gap-5  py-2 pr-2 md:pr-5 border-b items-center relative `} title={available_seats == 0 ? 'Class seat not available' : role !== 'student' ? `You can't select class because you're ${role ? role : 'not Logged'}` : ''}>
       <div className="w-full h-full overflow-hidden flex items-center">
         <img className="w-full group-hover:scale-[1.1] origin-center duration-500" src={image} alt="" />
       </div>
@@ -58,10 +58,10 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
         <p className={`text-xs sm:text-sm font-medium font-kanit`}>({total_review})</p>
       </div>
         }
-        <p className={`text-xs sm:text-sm font-medium`}>Available Seats: {available_seats}</p>
+        <p className={`text-xs sm:text-sm font-medium`}>Available Seats: <span className={available_seats === 0 && 'text-primary'}>{available_seats}</span></p>
         <div className={`text-xs font-normal flex gap-1`}>
             <p>{total_hours} total hours,</p>
-            {children !== 'manageClass' && <p>{student_level}</p>}
+            {children !== 'manageClass' && <p>{student_level},</p>}
             {children !== 'manageClass' && <p className="hidden sm:inline-block">Students: {number_of_students}</p>}
         </div>
       </div>
@@ -69,7 +69,7 @@ const ClassCard = ({ classes, children, updateStatus, setCurrentModalId, selectC
         <p>${price}</p>
       </div>
       <div className={`absolute bottom-2 right-1 ${children !== 'manageClass' && 'hidden group-hover:inline-block'}`}>
-        {children !== 'manageClass' && <Link><button onClick={()=> selectClass(_id, refetch)} className={`text-sm font-bold text-white px-2 py-1 ${spin && 'w-14'} ${available_seats == 0 || role === 'instructor' || role === 'admin' || selectedId === classes._id ? 'bg-gray-400' : 'animate-bounce hover:bg-primary bg-blue-600'}`} disabled={available_seats == 0 || role === 'instructor' || role === 'admin' || selectedId === classes._id}>{selectedId === classes._id ? 'Selected' : spin ? <span className="loading loading-spinner loading-xs bg-white"></span> : 'Select'}</button></Link>}
+        {children !== 'manageClass' && <Link><button onClick={()=> selectClass(_id, refetch)} className={`text-sm font-bold text-white px-2 py-1 ${spin && 'w-14'} ${available_seats == 0 || role === 'instructor' || role === 'admin' || selectedId === classes._id ? 'bg-gray-400' : 'animate-bounce hover:bg-primary bg-blue-600'}`} disabled={available_seats == 0 || role === 'instructor' || role === 'admin' || selectedId === classes._id || available_seats === 0}>{selectedId === classes._id ? 'Selected' : spin ? <span className="loading loading-spinner loading-xs bg-white"></span> : 'Select'}</button></Link>}
         {/* show only manage classes route */}
         {
           children === 'manageClass' && <div className="w-full flex gap-1">

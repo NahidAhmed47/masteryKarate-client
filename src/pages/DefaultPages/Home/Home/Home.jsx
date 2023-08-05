@@ -4,6 +4,7 @@ import AboutUs from '../AboutUs/AboutUs';
 import PopularClasses from '../PopularClasses/PopularClasses';
 import InstructorSection from '../InstructorsSection/InstructorSection';
 import setTitle from '../../../../utls/setTitle';
+import PopularServices from '../PopularServices/PopularServices';
 
 const Home = () => {
     setTitle('Home')
@@ -11,8 +12,9 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <AboutUs></AboutUs>
-            <PopularClasses></PopularClasses>
             <InstructorSection></InstructorSection>
+            <PopularServices></PopularServices>
+            <PopularClasses></PopularClasses>
         </div>
     );
 };

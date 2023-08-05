@@ -74,7 +74,7 @@ const CardContainer = ({ classesData }) => {
         <Loading />
       )}
     </>
-  );
+  ); 
 };
 
 export default CardContainer;

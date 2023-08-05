@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useInstructors from "../../../../hooks/useInstructors";
 import { BsQuote } from "react-icons/bs";
+import { set } from "react-hook-form";
 
 const InstructorSection = () => {
   const [instructors] = useInstructors();
@@ -27,7 +28,7 @@ const InstructorSection = () => {
     const interval = setInterval(() => {
       setSelectedInstructor(topInstructors[currentIndex]);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % topInstructors.length);
-    }, 4000);
+    }, 2000);
     return () => clearInterval(interval);
   }, [topInstructors, currentIndex]);
   return (

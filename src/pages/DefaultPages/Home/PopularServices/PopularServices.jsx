@@ -35,7 +35,7 @@ const popularServicesData = [
 const PopularServices = () => {
   return (
     <div className="h-[500px] md:h-[550px] w-full bg-[url('https://i.ibb.co/d4Lrcq0/bg-cover.jpg')] bg-cover relative mb-[280px]">
-      <div className=" w-full h-full bg-black bg-opacity-60 ">
+      <div className=" w-full h-full bg-black bg-opacity-70 ">
         <div className="max-container p-4 h-full w-full">
           <div className="text-center pt-10 md:pt-[75px] pb-3">
             <p className="text-primary font-kanit text-base font-bold">

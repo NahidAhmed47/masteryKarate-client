@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useInstructors from "../../../../hooks/useInstructors";
 import { BsQuote } from "react-icons/bs";
-import { set } from "react-hook-form";
 
 const InstructorSection = () => {
   const [instructors] = useInstructors();

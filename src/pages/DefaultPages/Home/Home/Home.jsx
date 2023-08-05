@@ -5,6 +5,7 @@ import PopularClasses from '../PopularClasses/PopularClasses';
 import InstructorSection from '../InstructorsSection/InstructorSection';
 import setTitle from '../../../../utls/setTitle';
 import PopularServices from '../PopularServices/PopularServices';
+import ExperienceCounter from '../ExperienceCounter/ExperienceCounter';
 
 const Home = () => {
     setTitle('Home')
@@ -14,6 +15,7 @@ const Home = () => {
             <AboutUs></AboutUs>
             <InstructorSection></InstructorSection>
             <PopularServices></PopularServices>
+            <ExperienceCounter></ExperienceCounter>
             <PopularClasses></PopularClasses>
         </div>
     );

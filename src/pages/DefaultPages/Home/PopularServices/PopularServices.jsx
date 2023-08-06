@@ -12,21 +12,21 @@ const popularServicesData = [
   {
     id: 2,
     img: "https://i.ibb.co/CM97CK9/services-img-6.png",
-    title: "Professional Trainer",
+    title: "Sportswoman Trainer",
     description:
       "It is a long established fact that reader will be distracted page its when looking at its layout.",
   },
   {
     id: 3,
     img: "https://i.ibb.co/1fBDXMr/services-img-7.png",
-    title: "Professional Trainer",
+    title: "Sport Boxing Man",
     description:
       "It is a long established fact that reader will be distracted page its when looking at its layout.",
   },
   {
     id: 4,
     img: "https://i.ibb.co/2jsM3C2/services-img-8.png",
-    title: "Professional Trainer",
+    title: "Guy Working Out",
     description:
       "It is a long established fact that reader will be distracted page its when looking at its layout.",
   },

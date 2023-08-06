@@ -5,7 +5,7 @@ import ButtonOutline from "../ButtonOutline/ButtonOutline";
 const PopularServicesCard = ({ service }) => {
   const { isDarkMode } = useTheme();
   return (
-    <div className="bg-opacity-0 rounded-md overflow-hidden shadow-md hover:shadow-xl duration-200">
+    <div className="bg-opacity-0 rounded-md overflow-hidden shadow-md hover:shadow-xl duration-200 min-w-[306px]">
       <div className="bg-opacity-0">
         <img src={service.img} alt="dfsd" />
       </div>

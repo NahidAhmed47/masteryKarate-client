@@ -47,7 +47,7 @@ const PopularServices = () => {
               Our Popular Services
             </h1>
           </div>
-          <div className="mt-12 md:mt-20 overflow-auto pb-10 min-w-[1300px]">
+          <div className="mt-12 md:mt-20  pb-10 whitespace-nowrap overflow-auto scrollbar-hide [&::-webkit-scrollbar]:hidden">
             <div className="grid grid-cols-4 gap-8 min-w-[1300px]">
               {popularServicesData.map((service) => (
                 <PopularServicesCard

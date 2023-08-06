@@ -21,7 +21,7 @@ const iconCartData = [
     {
         img: 'https://i.ibb.co/0K4gMTc/judo-1.png',
         hoverImg: 'https://i.ibb.co/gwG7fGn/judo-2.png',
-        title: 'Mixed Martial Arts'
+        title: 'Martial Arts'
     },
     {
         img: 'https://i.ibb.co/NLJfktt/bodybuilding.png',
@@ -52,7 +52,7 @@ const TrainSection = () => {
         title={"Train With The Best Legends"}
         subTitle={"Our Features"}
       ></SectionHeader>
-      <div className="max-container grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-container grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 mt-7 md:mt-12">
         {
             iconCartData.map((item, index) => <IconCart key={index} imgUrl={item.img} title={item.title} hoverImg={item.hoverImg}></IconCart>)
         }

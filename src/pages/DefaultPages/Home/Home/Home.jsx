@@ -6,6 +6,7 @@ import InstructorSection from '../InstructorsSection/InstructorSection';
 import setTitle from '../../../../utls/setTitle';
 import PopularServices from '../PopularServices/PopularServices';
 import ExperienceCounter from '../ExperienceCounter/ExperienceCounter';
+import TrainSection from '../TrainSection/TrainSection';
 
 const Home = () => {
     setTitle('Home')
@@ -13,9 +14,10 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <AboutUs></AboutUs>
-            <InstructorSection></InstructorSection>
             <PopularServices></PopularServices>
+            <InstructorSection></InstructorSection>
             <ExperienceCounter></ExperienceCounter>
+            <TrainSection></TrainSection>
             <PopularClasses></PopularClasses>
         </div>
     );

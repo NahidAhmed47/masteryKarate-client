@@ -37,7 +37,7 @@ const Contract = () => {
             <div className={`w-full h-fit duration-500 ${isDarkMode ? '' : 'bg-[#f6f5fb]'} p-4 md:p-8 md:py-14 my-32 max-container`}>
                 <div className='max-w-[1320px] mx-auto grid md:grid-cols-2'>
                     <div className='flex items-center justify-center'>
-                        <img src="/public/contact.webp" alt='contractImg' ></img>
+                        <img src="https://i.ibb.co/jvnLw2m/contact.webp" alt='contractImg' ></img>
                     </div>
                     {/* contact form */}
                     <div className='px-2 md:px-5 '>

@@ -6,7 +6,7 @@ const Subscribe = () => {
     return (
         <div className={`rounded-md grid md:grid-cols-2 mb-10 p-5 md:p-8 lg:p-10 duration-500 ${isDarkMode ? '' : 'bg-[#f6f5fb]'}`}>
             <div className='flex justify-center items-center'>
-                <img src="/public/subscribe.webp" alt="subscribeImg" ></img>
+                <img src="https://i.ibb.co/nCC6bxW/subscribe.webp" alt="subscribeImg" ></img>
             </div>
             <div className='flex items-center'>
                 <div className='space-y-4'>

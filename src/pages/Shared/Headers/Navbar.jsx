@@ -213,7 +213,7 @@ const Navbar = () => {
                 }
               </div>
             ) : (
-              <Link to="/login"><button className={`my-btn ${isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}>Login</button></Link>
+              <Link to="/login"><button className={`my-btn ${isDarkMode ? 'text-white' : `${location.pathname === '/' ? 'text-white' : 'text-gray-900'}`}`}>Get In Touch</button></Link>
             )}
           <div
             onClick={handleProfile}

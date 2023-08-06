@@ -2,6 +2,8 @@ import React from "react";
 import useTheme from "../../../../hooks/useTheme";
 import MiniService from "../../../../components/MiniSerForAboutUs/MiniService";
 import ButtonFill from "../../../../components/ButtonFill/ButtonFill";
+import { Link } from "react-router-dom";
+import ButtonOutline from "../../../../components/ButtonOutline/ButtonOutline";
 
 const AboutUs = () => {
   const { isDarkMode } = useTheme();
@@ -52,7 +54,11 @@ const AboutUs = () => {
               description="Many desktop publishing packages and use will uncover many web sites."
             ></MiniService>
           </div>
-          <ButtonFill name="More About Us"></ButtonFill>
+          <div className="mt-3">
+          <Link to="/about">
+          <ButtonOutline text={'More About Us'}></ButtonOutline>
+          </Link>
+          </div>
         </div>
       </div>
     </div>

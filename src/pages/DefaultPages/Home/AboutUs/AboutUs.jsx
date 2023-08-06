@@ -20,14 +20,14 @@ const AboutUs = () => {
             About Us
           </p>
           <h1
-            className={`text-2xl md:text-4xl font-bold ${
+            className={`text-2xl md:text-4xl font-bold duration-500 ${
               isDarkMode ? "text-gray-200" : "text-black"
             }`}
           >
             We Are Ready To Set You Differently From Others
           </h1>
           <p
-            className={`font-kanit text-sm md:text-base ${
+            className={`font-kanit text-sm md:text-base duration-500 ${
               isDarkMode ? "text-gray-300" : "text-secondary"
             }`}
           >

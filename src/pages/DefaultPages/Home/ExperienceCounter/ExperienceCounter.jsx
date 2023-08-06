@@ -12,15 +12,15 @@ const ExperienceCounter = () => {
             </div>
             <div className=''>
                 <CountInView start={0} end={595} duration={2} />
-                <div className={`text-lg md:text-xl font-semibold text-[#666666]  ${isDarkMode ? 'text-slate-200' : ''}`}>Total Members</div>
+                <div className={`text-lg md:text-xl font-semibold text-[#666666] <ButtonOutline text={"See All Classes"} icon={true}></ButtonOutline> ${isDarkMode ? 'text-slate-200' : ''}`}>Total Members</div>
             </div>
             <div className=''>
                 <CountInView start={0} end={80} duration={2} />
-                <div className={`text-lg md:text-xl font-semibold text-[#666666]  ${isDarkMode ? 'text-slate-200' : ''}`}>Professional Trainers</div>
+                <div className={`text-lg md:text-xl font-semibold text-[#666666] <ButtonOutline text={"See All Classes"} icon={true}></ButtonOutline>  ${isDarkMode ? 'text-slate-200' : ''}`}>Professional Trainers</div>
             </div>
             <div className=''>
                 <CountInView start={0} end={620} duration={2} />
-                <div className={`text-lg md:text-xl font-semibold text-[#666666]  ${isDarkMode ? 'text-slate-200' : ''}`}>Success Stories</div>
+                <div className={`text-lg md:text-xl font-semibold text-[#666666] <ButtonOutline text={"See All Classes"} icon={true}></ButtonOutline> ${isDarkMode ? 'text-slate-200' : ''}`}>Success Stories</div>
             </div>
         </div>
     );

@@ -10,19 +10,19 @@ const PopularServicesCard = ({ service }) => {
         <img src={service.img} alt="dfsd" />
       </div>
       <div
-        className={` p-4 md:p-7 space-y-4 ${
+        className={` p-4 md:p-7 space-y-4 duration-500 ${
           isDarkMode ? "bg-[#212226]" : "bg-white"
         }`}
       >
         <h1
-          className={`text-xl font-extrabold ${
+          className={`text-xl font-extrabold duration-500 ${
             isDarkMode ? "text-slate-200" : "text-gray-700"
           } font-kanit`}
         >
           {service.title}
         </h1>
         <p
-          className={`text-sm font-kanit ${
+          className={`text-sm font-kanit duration-500 ${
             isDarkMode ? "text-slate-300" : "text-gray-600"
           } font-medium`}
         >

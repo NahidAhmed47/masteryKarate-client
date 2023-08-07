@@ -9,7 +9,7 @@
     @apply text-primary w-4 h-4 transition-colors duration-500 hover:text-white
 }
 .my-btn{
-    @apply px-5 py-2 rounded-full border border-primary text-base font-bold font-kanit hover:bg-red-500 hover:animate-pulse transition-all duration-300 
+    @apply px-5 py-2 rounded-full border border-primary text-base font-bold font-kanit 
 }
 .my-btn-fill{
     @apply px-5 py-2 rounded-full border border-primary text-base font-bold font-kanit bg-primary hover:animate-pulse transition-all duration-300 

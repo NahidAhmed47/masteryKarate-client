@@ -60,7 +60,7 @@ const CardContainer = ({ classesData }) => {
   return (
     <>
       {classesData.length > 0 ? (
-        <div data-aos="zoom-in-up" className="grid lg:grid-cols-2 gap-5 md:gap-8 mt-8 ">
+        <div data-aos="" className="grid lg:grid-cols-2 gap-5 md:gap-8 mt-8 ">
           {classesData?.map((eachClass) => (
             <ClassCard
               key={eachClass._id}

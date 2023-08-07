@@ -49,24 +49,33 @@ const Navbar = () => {
         ></FaBars>
       </div>
       {/* logo */}
-      <div className="flex justify-center items-center gap-2 ">
-        <img
-          className="w-8 md:w-16"
-          src="https://i.ibb.co/TtWvLPx/mastery-karate-logo.png"
-          alt=""
-        />
-        <h1
-          className={`text-xl sm:text-3xl font-kanit font-extrabold ${
-            location.pathname !== "/" && isDarkMode
-              ? "text-white"
-              : `${location.pathname === "/" ? "text-white" : "text-gray-900"}`
-          }`}
-        >
-          Mastery<span className="text-primary">Karate</span>
-        </h1>
-      </div>
+      <Link to="/">
+        <div className="flex justify-center items-center gap-2 ">
+          <img
+            className="w-8 md:w-16"
+            src="https://i.ibb.co/TtWvLPx/mastery-karate-logo.png"
+            alt=""
+          />
+          <h1
+            className={`text-xl sm:text-3xl font-kanit font-extrabold ${
+              location.pathname !== "/" && isDarkMode
+                ? "text-white"
+                : `${
+                    location.pathname === "/" ? "text-white" : "text-gray-900"
+                  }`
+            }`}
+          >
+            Mastery<span className="text-primary">Karate</span>
+          </h1>
+        </div>
+      </Link>
       {/* nav link */}
-      {isOpenMenu && <button onClick={toggleMenu} className="bg-black lg:hidden bg-opacity-30 fixed top-0 left-0 right-0 bottom-0 z-[49]"></button>}
+      {isOpenMenu && (
+        <button
+          onClick={toggleMenu}
+          className="bg-black lg:hidden bg-opacity-30 fixed top-0 left-0 right-0 bottom-0 z-[49]"
+        ></button>
+      )}
       <div
         className={
           isOpenMenu
@@ -81,13 +90,11 @@ const Navbar = () => {
         <FaTimes
           className={
             isOpenMenu
-              ? ` ${
-                   `${
-                        isDarkMode
-                          ? "lg:hidden w-6 h-6 text-white"
-                          : "lg:hidden w-6 h-6 text-black"
-                      }`
-                }`
+              ? ` ${`${
+                  isDarkMode
+                    ? "lg:hidden w-6 h-6 text-white"
+                    : "lg:hidden w-6 h-6 text-black"
+                }`}`
               : "hidden"
           }
           onClick={toggleMenu}
@@ -330,7 +337,7 @@ const Navbar = () => {
         ) : (
           <Link to="/login">
             <button
-              className={`my-btn ${
+              className={`my-btn relative  group overflow-hidden w-[138px] h-[42px] ${
                 isDarkMode
                   ? "text-white"
                   : `${
@@ -338,7 +345,9 @@ const Navbar = () => {
                     }`
               }`}
             >
-              Get In Touch
+              <h1 className="absolute z-20 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-full group-hover:text-white duration-500">Get In Touch</h1>
+              <div className="bg-primary z-[10] absolute top-0 left-0 h-0 w-0 rounded-full group-hover:h-full group-hover:w-full duration-500"></div>
+              <div className="bg-[#212226] z-[9] absolute bottom-0 right-0 h-0 w-0 rounded-full group-hover:h-full group-hover:w-full duration-500"></div>
             </button>
           </Link>
         )}
